@@ -78,7 +78,7 @@ if(!is_null($text) && !is_null($chat_id)){
 		$img = curl_file_create("server_status",'image/png');
 		$content = array('chat_id' => $chat_id, 'photo' => $img );
 		$telegram->sendPhoto($content);
-	
+	}
 }
 
 ?>
