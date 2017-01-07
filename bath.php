@@ -69,11 +69,11 @@ if(!is_null($text) && !is_null($chat_id)){
 		$gum = "http://cache.www.gametracker.com/server_info/115.159.120.160:27015/b_560_95_1.png";
 		$yu = "http://cache.www.gametracker.com/server_info/119.254.111.244:27015/b_560_95_1.png";
 		file_put_contents("b_560_95_1.png", file_get_contents($gum));
-		$img = curl_file_create("server_status",'image/png');
+		$img = curl_file_create("b_560_95_1.png",'image/png');
 		$content = array('chat_id' => $chat_id, 'photo' => $img );
 		$telegram->sendPhoto($content);
 		file_put_contents("b_560_95_1.png", file_get_contents($yu));
-		$img = curl_file_create("server_status",'image/png');
+		$img = curl_file_create("b_560_95_1.png",'image/png');
 		$content = array('chat_id' => $chat_id, 'photo' => $img );
 		$telegram->sendPhoto($content);
 	}
