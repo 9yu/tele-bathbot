@@ -67,14 +67,14 @@ if(!is_null($text) && !is_null($chat_id)){
 	
 	if ($text == "/server_status") || $text == "/server_status@gumtakebath_bot") {
 		$gum = "http://cache.www.gametracker.com/server_info/115.159.120.160:27015/b_560_95_1.png";
-		$9yu = "http://cache.www.gametracker.com/server_info/119.254.111.244:27015/b_560_95_1.png";
+		$yu = "http://cache.www.gametracker.com/server_info/119.254.111.244:27015/b_560_95_1.png";
 		
 		file_put_contents("server_status.png", file_get_contents($gum));
 		$img = curl_file_create("server_status",'image/png');
 		$content = array('chat_id' => $chat_id, 'photo' => $img );
 		$telegram->sendPhoto($content);
 		
-		file_put_contents("server_status.png", file_get_contents($9yu));
+		file_put_contents("server_status.png", file_get_contents($yu));
 		$img = curl_file_create("server_status",'image/png');
 		$content = array('chat_id' => $chat_id, 'photo' => $img );
 		$telegram->sendPhoto($content);
