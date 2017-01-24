@@ -1,6 +1,5 @@
 <?php
 
-$text == "/hitokoto" || $text == "/hitokoto@gumtakebath_bot") {
 $url = "http://api.hitokoto.cn/";
 $json = file_get_contents($url);
 $de_json = json_decode($json, true);
