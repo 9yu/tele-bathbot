@@ -7,5 +7,6 @@ $hitokoto = $de_json['hitokoto'];
 $from = $de_json['from'];
 $reply = $hitokoto + "    ——" + $from;
 print $reply;
-
+print "<br>";
+print $de_json;
 ?>
