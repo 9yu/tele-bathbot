@@ -37,10 +37,7 @@ if(!is_null($text) && !is_null($chat_id)){
 		$url = "http://api.hitokoto.cn/";
 		$json = file_get_contents($url);
 		$de_json = json_decode($json, true);
-		$hitokoto = $de_json['hitokoto'];
-		$from = $de_json['from'];
-		$reply = $hitokoto + "    ——" + $from; 
-		$content = array('chat_id' => $chat_id, 'text' => $de_json['hitokoto']);
+		$content = array('chat_id' => $chat_id, 'text' => "$de_json['hitokoto']    ——$de_json['from']");
 		$telegram->sendMessage($content);
 	}
 
