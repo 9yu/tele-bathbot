@@ -40,7 +40,7 @@ if(!is_null($text) && !is_null($chat_id)){
 		$hitokoto = $de_json['hitokoto'];
 		$from = $de_json['from'];
 		$reply = $hitokoto + "    ——" + $from; 
-		$content = array('chat_id' => $chat_id, 'text' => $reply);
+		$content = array('chat_id' => $chat_id, 'text' => $de_json['hitokoto']);
 		$telegram->sendMessage($content);
 	}
 
