@@ -51,7 +51,7 @@ if(!is_null($text) && !is_null($chat_id)){
 	}
 	
 	if ($text == "/doujin_pic_random" || $text == "/doujin_pic_random@gumtakebath_bot") {
-		$num = rand(1, 976400);
+		$num = rand(930000, 982528);
 		$nump = floor($num/2000);
 		$url = "http://img.doujinshi.org/big/$nump/$num.jpg";
 		file_put_contents("$num.jpg", file_get_contents($url));
