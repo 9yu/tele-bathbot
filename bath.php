@@ -34,7 +34,8 @@ if(!is_null($text) && !is_null($chat_id)){
 	}
 	
 	if ($text == "/hitokoto" || $text == "/hitokoto@gumtakebath_bot") {
-		$url = "http://api.hitokoto.cn/";
+		$rand = chr(rand(97,100));
+		$url = "http://api.hitokoto.cn/?c=$rand";
 		$json = file_get_contents($url);
 		$de_json = json_decode($json, true);
 		//$text = de_json['hitokoto'] + "  ——" + de_json['from'];
