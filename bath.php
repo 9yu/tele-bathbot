@@ -68,7 +68,7 @@ if(!is_null($text) && !is_null($chat_id)){
 		//$telegram->sendPhoto($content);		
 	}
 	
-	if ($text == "/server_status" || $text == "/server_status@gumtakebath_bot") {
+	/*if ($text == "/server_status" || $text == "/server_status@gumtakebath_bot") {
 		$s1 = "http://cache.www.gametracker.com/server_info/115.159.120.160:27015/b_560_95_1.png";
 		$s2 = "http://cache.www.gametracker.com/server_info/119.254.111.244:27015/b_560_95_3.png";
 		$s3 = "http://cache.www.gametracker.com/server_info/119.254.111.244:27016/b_560_95_2.png";
@@ -88,7 +88,7 @@ if(!is_null($text) && !is_null($chat_id)){
 		$img = curl_file_create("s3.png",'image/png');
 		$content = array('chat_id' => $chat_id, 'photo' => $img );
 		$telegram->sendPhoto($content);
-	}
+	}*/
 }
 
 ?>
