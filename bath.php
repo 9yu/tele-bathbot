@@ -20,7 +20,7 @@ $telegram = new Telegram($bot_id);
 $text = $telegram->Text();
 $chat_id = $telegram->ChatID();
 
-function curl_get_contents($url,$timeout=1) { 
+function curl_get_contents($url,$timeout=4) { 
 	$curlHandle = curl_init(); 
 	curl_setopt( $curlHandle , CURLOPT_URL, $url ); 
 	curl_setopt( $curlHandle , CURLOPT_RETURNTRANSFER, 1 ); 
@@ -64,14 +64,13 @@ if(!is_null($text) && !is_null($chat_id)){
 		$rand = chr(rand(97,100));
 		$get = curl_get_contents("http://api.hitokoto.cn/?c=$rand");
 		if ( $get === false ) {
-			$content = "503";
-			$from = "";
+			$return = "Error. 连接超时.";
 		} else {
 			$de_json = json_decode($get, true);
 			$content = $de_json['hitokoto'];
 			$from = $de_json['from'];
+			$return = $content . '    ——'  . $from;
 		};
-		$return = $content . '    ——'  . $from;
 		$content = array('chat_id' => $chat_id, 'text' => $return);
 		$telegram->sendMessage($content);
 	}
