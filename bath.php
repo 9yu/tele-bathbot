@@ -30,6 +30,7 @@ function curl_get_contents($url,$timeout=1) {
 	return $result; 
 }
 
+/*
 function hitokoto() {
 	$rand = chr(rand(97,100));
 	$get = curl_get_contents("http://api.hitokoto.cn/?c=$rand");
@@ -43,7 +44,7 @@ function hitokoto() {
 	};
 	$return = $content . '    ——'  . $from;
 	return $return;
-}
+}*/
 
 
 // Check if the text is a command
@@ -60,7 +61,18 @@ if(!is_null($text) && !is_null($chat_id)){
 	}
 	
 	if ($text == "/hitokoto" || $text == "/hitokoto@gumtakebath_bot") {
-		$content = array('chat_id' => $chat_id, 'text' => hitokoto(););
+		$rand = chr(rand(97,100));
+		$get = curl_get_contents("http://api.hitokoto.cn/?c=$rand");
+		if ( $get === false ) {
+			$content = "503";
+			$from = "";
+		} else {
+			$de_json = json_decode($get, true);
+			$content = $de_json['hitokoto'];
+			$from = $de_json['from'];
+		};
+		$return = $content . '    ——'  . $from;
+		$content = array('chat_id' => $chat_id, 'text' => $return);
 		$telegram->sendMessage($content);
 	}
 
