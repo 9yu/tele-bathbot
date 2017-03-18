@@ -88,7 +88,7 @@ if(!is_null($text) && !is_null($chat_id)){
 		$num = rand(930000, 982528);
 		$nump = floor($num/2000);
 		$url = "http://img.doujinshi.org/big/$nump/$num.jpg";
-		file_put_contents("$num.jpg", file_get_contents($url));
+		file_put_contents("$num.jpg", curl_get_contents($url));
 		$img = curl_file_create("$num.jpg",'image/jpeg');
 		$content = array('chat_id' => $chat_id, 'photo' => $img );
 		$telegram->sendPhoto($content);
