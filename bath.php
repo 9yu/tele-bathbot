@@ -20,7 +20,7 @@ $telegram = new Telegram($bot_id);
 $text = $telegram->Text();
 $chat_id = $telegram->ChatID();
 
-function curl_get_contents($url,$timeout=4) { 
+function curl_get_contents($url,$timeout) { 
 	$curlHandle = curl_init(); 
 	curl_setopt( $curlHandle , CURLOPT_URL, $url ); 
 	curl_setopt( $curlHandle , CURLOPT_RETURNTRANSFER, 1 ); 
@@ -62,7 +62,7 @@ if(!is_null($text) && !is_null($chat_id)){
 	
 	if ($text == "/hitokoto" || $text == "/hitokoto@gumtakebath_bot") {
 		$rand = chr(rand(97,100));
-		$get = curl_get_contents("http://api.hitokoto.cn/?c=$rand");
+		$get = curl_get_contents("http://api.hitokoto.cn/?c=$rand",2);
 		if ( $get === false ) {
 			$return = "Error. 连接超时.";
 		} else {
@@ -88,10 +88,17 @@ if(!is_null($text) && !is_null($chat_id)){
 		$num = rand(930000, 982528);
 		$nump = floor($num/2000);
 		$url = "http://img.doujinshi.org/big/$nump/$num.jpg";
-		file_put_contents("$num.jpg", curl_get_contents($url));
-		$img = curl_file_create("$num.jpg",'image/jpeg');
-		$content = array('chat_id' => $chat_id, 'photo' => $img );
-		$telegram->sendPhoto($content);
+		$get = curl_get_contents($url,4);
+		if ( $get === false ) {
+			$content = array('chat_id' => $chat_id, 'text' => "Error. 连接超时.");
+			$telegram->sendMessage($content);
+		} else {
+			file_put_contents("$num.jpg", curl_get_contents($url,5));
+			$img = curl_file_create("$num.jpg",'image/jpeg');
+			$content = array('chat_id' => $chat_id, 'photo' => $img );
+			$telegram->sendPhoto($content);
+		};
+
 	
 		//$url = "http://img.doujinshi.org/big/0/200.jpg";
 		//file_put_contents("/pic/200.jpg", file_get_contents($url));
