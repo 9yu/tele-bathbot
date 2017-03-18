@@ -41,7 +41,6 @@ function hitokoto($cate) {
 		$from = $de_json['from'];
 	};
 	$return = $content . '    ——'  . $from;
-	echo $return;
 	return;
 }
 
@@ -61,7 +60,7 @@ if(!is_null($text) && !is_null($chat_id)){
 	
 	if ($text == "/hitokoto" || $text == "/hitokoto@gumtakebath_bot") {
 		$rand = chr(rand(97,100));
-		$content = array('chat_id' => $chat_id, 'text' => hitokoto($rand));
+		$content = array('chat_id' => $chat_id, 'text' => $return);
 		$telegram->sendMessage($content);
 	}
 
