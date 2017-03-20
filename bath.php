@@ -62,9 +62,9 @@ if(!is_null($text) && !is_null($chat_id)){
 	
 	if ($text == "/hitokoto" || $text == "/hitokoto@gumtakebath_bot") {
 		$rand = chr(rand(97,100));
-		$get = curl_get_contents("http://api.hitokoto.cn/?c=$rand",2);
+		$get = curl_get_contents("http://api.hitokoto.cn/?c=$rand",9);
 		if ( $get === false ) {
-			$return = "Error. 连接超时.";
+			$return = "_(:з」∠)_    ——bot";
 		} else {
 			$de_json = json_decode($get, true);
 			$content = $de_json['hitokoto'];
@@ -88,9 +88,9 @@ if(!is_null($text) && !is_null($chat_id)){
 		$num = rand(930000, 982528);
 		$nump = floor($num/2000);
 		$url = "http://img.doujinshi.org/big/$nump/$num.jpg";
-		$get = curl_get_contents($url,4);
+		$get = curl_get_contents($url,9);
 		if ( $get === false ) {
-			$content = array('chat_id' => $chat_id, 'text' => "Error. 连接超时.");
+			$content = array('chat_id' => $chat_id, 'text' => "_(:з」∠)_    ——bot");
 			$telegram->sendMessage($content);
 		} else {
 			file_put_contents("$num.jpg", curl_get_contents($url,5));
