@@ -76,6 +76,7 @@ if(!is_null($text) && !is_null($chat_id)){
 	}
 
 	if ($text == "/gumisbad" || $text == "/gumisbad@gumtakebath_bot") {
+		date_default_timezone_set("Asia/Shanghai");
 		$zone1 = strtotime(date("y-m-d h:i:s"));
 		$zone2 = strtotime("1996-3-31 00:00:00");
 		$gumtime = ceil(($zone1-$zone2)/86400);
