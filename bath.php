@@ -117,9 +117,10 @@ if(!is_null($text) && !is_null($chat_id)){
 		} elseif ( $get === "[]" ) {
 			$return = "无搜索结果。";
 		} else {
-			$de_json = json_decode($get, true);
-			$content = $de_json['0']['large_file_url'];
-			$return = $content;		
+			$json = json_decode($get, true);
+			$rand = rand(0,count($json));
+			$pic = $json[$rand]['large_file_url'];
+			$return = $pic;
 		};
 		$content = array('chat_id' => $chat_id, 'text' => $return);
 		$telegram->sendMessage($content);
