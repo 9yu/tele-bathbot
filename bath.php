@@ -114,17 +114,22 @@ if(!is_null($text) && !is_null($chat_id)){
 		$get = curl_get_contents("http://danbooru.donmai.us/posts.json?tags=$tag",9);
 		if ( $get === false ) {
 			$return = "网络错误。";
+			$content = array('chat_id' => $chat_id, 'text' => $return);
+			$telegram->sendMessage($content);
 		} elseif ( $get === "[]" ) {
 			$return = "无搜索结果。";
+			$content = array('chat_id' => $chat_id, 'text' => $return);
+			$telegram->sendMessage($content);
 		} else {
 			$json = json_decode($get, true);
 			$rand = rand(0,count($json));
 			$pic = $json[$rand]['large_file_url'];
-			$return = $pic;
+			$url = "http://danbooru.donmai.us$pic";
+			file_put_contents(substr($pic,6), curl_get_contents($url,9));
+			$img = curl_file_create(substr($pic,6));
+			$content = array('chat_id' => $chat_id, 'photo' => $img );
+			$telegram->sendPhoto($content);
 		};
-		$content = array('chat_id' => $chat_id, 'text' => $return);
-		$telegram->sendMessage($content);
-
 	}
 	
 	/*if ($text == "/server_status" || $text == "/server_status@gumtakebath_bot") {
