@@ -108,6 +108,12 @@ if(!is_null($text) && !is_null($chat_id)){
 		//$telegram->sendPhoto($content);		
 	}
 
+	if ($text == "/pic" || $text == "/pic@gumtakebath_bot") {
+		$reply = "输入 /pic [指定tag] 来搜索图片";
+		$content = array('chat_id' => $chat_id, 'text' => $reply);
+		$telegram->sendMessage($content);
+	}
+
 
 	if ( substr_count($text, "/pic ") == 1 ) {
 		$tag = substr($text, 5);
