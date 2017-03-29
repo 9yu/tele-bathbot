@@ -107,6 +107,24 @@ if(!is_null($text) && !is_null($chat_id)){
 		//$content = array('chat_id' => $chat_id, 'photo' => $img );
 		//$telegram->sendPhoto($content);		
 	}
+
+
+	if ( substr_count($text, "/pic ") == 1 ) {
+		$tag = substr($text, 5);
+		$get = curl_get_contents("http://danbooru.donmai.us/posts.json?tags=$tag",9);
+		if ( $get === false ) {
+			$return = "网络错误。";
+		} elseif ( $get === "[]" ) {
+			$return = "无搜索结果。";
+		} else {
+			$de_json = json_decode($get, true);
+			$content = $de_json['0']['large_file_url'];
+			$return = $content;		
+		};
+		$content = array('chat_id' => $chat_id, 'text' => $return);
+		$telegram->sendMessage($content);
+
+	}
 	
 	/*if ($text == "/server_status" || $text == "/server_status@gumtakebath_bot") {
 		$s1 = "http://cache.www.gametracker.com/server_info/115.159.120.160:27015/b_560_95_1.png";
