@@ -125,8 +125,8 @@ if(!is_null($text) && !is_null($chat_id)){
 			$rand = rand(0,count($json));
 			$pic = $json[$rand]['large_file_url'];
 			$url = "http://danbooru.donmai.us$pic";
-			file_put_contents(substr($pic,6), curl_get_contents($url,9));
-			$img = curl_file_create(substr($pic,6),'image/jpeg');
+			file_put_contents(substr($pic,-6), curl_get_contents($url,9));
+			$img = curl_file_create(substr($pic,-6),'image/jpeg');
 			$content = array('chat_id' => $chat_id, 'photo' => $img );
 			$telegram->sendPhoto($content);
 		};
