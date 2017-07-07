@@ -56,3 +56,4 @@ if ($text === 'first_time_init')
 	    $telegram->sendMessage($content);
 	}
 }
+
