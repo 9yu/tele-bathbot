@@ -18,6 +18,7 @@ function curl_get_contents($url,$timeout) {
 	return $result; 
 }
 
+// 连接数据库
 $dbcon = pg_connect('host=ec2-184-73-167-43.compute-1.amazonaws.com port=5432 dbname=d6sqqclb90mkt3 user=
 veosnlmajlloas password=
 c1bb3c279f83f6f79e54f4848e31a135a47a7fb9adf850a7860727e0622714d9');
@@ -27,26 +28,21 @@ if ( $dbcon === FALSE )
 }
 
 // 第一次创建表
-// bath_monster -- type  /    hp     /   remain   /  monster_id   /  attacker_username /    died    /  
-//           varchar(10) /   (int)   /   (int)    /    (int)      /    varchar(50)     /  (boolean) /
-//               monster /    200    /    100     /     99        /       123456       /    true    /
-//                 boss  /    3000   /    2000    /      1        /         null       /    false   /
+// bath_monster -- type  /    hp     /   remain   /  monster_id   /  attacker_username /    died    /  attacker_name /
+//           varchar(10) /   (int)   /   (int)    /    (int)      /    varchar(50)     /  (boolean) /	varchar(50)  /
+//               monster /    200    /    100     /     99        /       123456       /    true    /    first_name  /
+//                 boss  /    3000   /    2000    /      1        /         null       /    false   /      null      /
 //
-// bath_user --    type  /    hp     /  strength  /  level     /   username    /
-//           varchar(10) /  (bigint) /  (bigint)  /  (biginit) /  varchar(50)  /
-//                yuusya /    10     /     20     /    1       /     aaaaa     /
+// bath_user --    type  /    hp     /  strength  /  level     /   username    /   name       /
+//           varchar(10) /  (bigint) /  (bigint)  /  (biginit) /  varchar(50)  /  varchar(50) /
+//                yuusya /    10     /     20     /    1       /     aaaaa     /   first_name /
 //
 // bath_data --    power   /   down_hp_day  /   id   /
 //               (bigint)  /    (bigint)    /  (int) /
 //               200000000 /     10000      /    1   /
 
-if ($text === 'return_param')
-{
-	$result = json_encode($data);
-	$content = array('chat_id' => $chat_id, 'text' => $result);
-    $telegram->sendMessage($content);
-}
-
+// TESTING!
+include('part/test.php');
 
 // 次数统计 & 快速回复
 include('part/main.php');
