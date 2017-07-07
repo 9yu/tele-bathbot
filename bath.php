@@ -38,9 +38,9 @@ if ( $dbcon === FALSE )
 //           varchar(10) /  (bigint) /  (bigint)  /  (biginit) /  varchar(50)  /  varchar(50) /
 //                yuusya /    10     /     20     /    1       /     aaaaa     /   first_name /
 //
-// bath_data --    power   /   down_hp_day  /   id   /
-//               (bigint)  /    (bigint)    /  (int) /
-//               200000000 /     10000      /    1   /
+// bath_data --    heta_power   /   heta_power_a_day  /   id   /
+//               (bigint)  /    (bigint)              /  (int) /
+//               200000000 /     10000                /    1   /
 
 // TESTING!
 include('part/test.php');
