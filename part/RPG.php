@@ -42,4 +42,5 @@ if( $text ==='text delete' )
 	 'message_id' => 5096
 		);
 	$result = $telegram->deleteMessage($content);
+	$telegram->sendMessage(array('chat_id'=>$chat_id, 'text'=>json_encode($result)));
 }
