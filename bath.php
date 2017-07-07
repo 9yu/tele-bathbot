@@ -42,8 +42,11 @@ if ( $dbcon === FALSE )
 //               (bigint)  /    (bigint)              /  (int) /
 //               200000000 /     10000                /    1   /
 
+
+if(!is_null($text) && !is_null($chat_id))
+{
 // TESTING!
-include('part/test.php');
+//include('part/test.php');
 
 // 次数统计 & 快速回复
 include('part/main.php');
@@ -62,5 +65,6 @@ include('part/danbooru_search.php');
 
 // RPG
 include('part/RPG.php');
+}
 
 ?>
