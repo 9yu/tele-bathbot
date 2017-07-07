@@ -11,5 +11,5 @@ if( is_file("data.delete.$username.cache.json") )
 $delete = array(
 	'chat_id' => $chat_id,
  'message_id' => $result['result']['message_id'] 
-	)
+	);
 file_put_contents("data.delete.$username.cache.json", json_encode($delete));
