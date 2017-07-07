@@ -64,7 +64,7 @@ include('part/danbooru_search.php');
 //include('part/servers_status.php');
 
 // RPG
-//include('part/RPG.php');
+include('part/RPG.php');
 }
 
 ?>
