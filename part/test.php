@@ -7,6 +7,15 @@ if ($text === 'return_param')
     $telegram->sendMessage($content);
 }
 
+if ( $text === 'test2')
+{
+	$content = array('chat_id' => $chat_id, 'text' => 'test');
+    $result = $telegram->sendMessage($content);
+
+	$content = array('chat_id' => $chat_id, 'text' => json_encode($result));
+    $result = $telegram->sendMessage($content);
+}
+
 /**
 if ($text === 'first_time_init')
 {

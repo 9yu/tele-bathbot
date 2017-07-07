@@ -56,12 +56,15 @@ if ( substr(trim($text), 0, 4) === '/rpg' )
 			$chara['target'] = null;
 
 			// * 第一次游戏提示
+			$return_text = "勇者 $name 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。";
+			include('part/RPG_history.php');
 			$content = array(
-							'text'	=> "勇者 $name 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。",
+							'text'	=> urlencode($return_all),
 						 'chat_id'  => $chat_id,
 			 'reply_to_message_id'  => $message_id
 				);
 			$telegram->sendMessage($content);
+
 
 		}
 		else
@@ -100,22 +103,80 @@ if ( substr(trim($text), 0, 4) === '/rpg' )
 	// 二、角色行为判断
 	//
 
-    // 1.无所事事状态
+	// 1.探索状态
+	if( $rpg_param[0] === 'EXPLORE' )
+	{
+		if( $rpg_param[1] === 'IT' )
+		{
+			// 随机事件
+			$rand = rand(0,100);
+			if( $rand < 60 )
+			{
+				// 遇小怪 MONSTER
+				$chara['status'] === 'battle';
+				$target_hp = rand(200, 400);
+				$target_str = rand(20, 200);
+				$target_details = array(
+					'type' => 'MONSTER',
+				  'max_hp' => $target_hp,
+			   'remain_hp' => $target_hp,
+			         'str' => $target_str
+					);
+				file_put_contents("data.target.$username.cache.json", json_encode($target_details));
+				// 记录怪数据
+
+				// 显示给玩家
+
+				$option = array(
+					array($telegram->buildKeyboardButton("/rpg ATTACK IT")),
+					array($telegram->buildKeyboardButton("/rpg HIDE DEFENSE")),
+					array($telegram->buildKeyboardButton("/rpg ESCAPE !!"))
+					);
+				$keyb = $telegram->buildKeyBoard($option, $onetime = true);
+				$return_text = "污秽不堪的东西逼近过来了…… \n HP: $target_hp \n 力量: $target_str \n 怎么办是好？";
+				include('part/RPG_history.php');
+				$content = array(
+							'chat_id' => $chat_id, 
+				'reply_to_message_id' => $message_id,
+							'reply_markup' => $keyb, 
+							'text' => $return_all
+					);
+				$telegram->sendMessage($content);
+
+			}
+		}
+
+
+	}
+
+
+
+    // 3.无所事事状态
 	if( $chara['status'] === null )
 	{
 		// 显示主菜单
 		$option = array(
-			array($telegram->buildKeyboardButton("探索"), $telegram->buildKeyboardButton("自己"))
+			array($telegram->buildKeyboardButton("/rpg EXPLORE IT")),
+			array($telegram->buildKeyboardButton("/rpg SELF CHECK"))
 			);
-		$keyb = $telegram->buildKeyBoard($option, $onetime = false);
+		$keyb = $telegram->buildKeyBoard($option, $onetime = true);
+		$return_text = "“又来到了这脏乱之地。”";
+		include('part/RPG_history.php');
 		$content = array(
 					'chat_id' => $chat_id, 
 		'reply_to_message_id' => $message_id,
 					'reply_markup' => $keyb, 
-					'text' => "“又来到了这脏乱之地。”"
+					'text' => $return_all
 			);
 		$telegram->sendMessage($content);
 	}
+
+
+
+	file_put_contents("data.chara.$username.cache.json", json_encode($chara));
+
+
+
 
 }
 
@@ -133,3 +194,4 @@ if ( strpos($text, '#rpg_control#') !== FALSE )
 		$result = $telegram->deleteMessage($content);
 	}
 }
+
