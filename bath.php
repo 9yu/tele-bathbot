@@ -6,6 +6,7 @@ $telegram = new Telegram($bot_id);
 $text = $telegram->Text();
 $chat_id = $telegram->ChatID();
 $data = $telegram->getData();
+$message_id = $data['message']['message_id'];
 //$callback_query = $telegram->Callback_Query();
 
 function curl_get_contents($url,$timeout) { 
