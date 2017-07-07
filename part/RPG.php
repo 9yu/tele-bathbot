@@ -26,7 +26,7 @@ if ($text == "/rpg_start" || $text == "/rpg_start@gumtakebath_bot")
 if ( strpos($text, '#rpg_control#') !== FALSE )
 {
 	$groups_ava = array('-136444736','-1001128716814');
-	if (in_array($chat_id, $groups_ava)) {
+	if (in_array((string)$chat_id, $groups_ava)) {
 		$content = array(
 			'chat_id' => $chat_id,
 		 'message_id' => $message_id
