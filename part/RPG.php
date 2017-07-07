@@ -38,12 +38,20 @@ if ( strpos($text, '#rpg_control#') !== FALSE )
 if( $text ==='text delete' )
 {
 	$content = array(
-		'chat_id' => -136444736,
-	 'message_id' => 5096
+		'chat_id' => '-136444736',
+	 'message_id' => 5115
 		);
 	$result = $telegram->deleteMessage($content);
 
-	$result = json_encode($result);
+	if( $result === TRUE )
+	{
+		$result = 'SUCCESS';
+	}
+	else
+	{
+		$result = 'FAILED';
+	}
+
 	$content = array('chat_id' => $chat_id, 'text' => $result);
     $telegram->sendMessage($content);
 }

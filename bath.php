@@ -60,4 +60,7 @@ include('part/danbooru_search.php');
 // 服务器运行状态
 //include('part/servers_status.php');
 
+// RPG
+include('part/RPG.php');
+
 ?>
