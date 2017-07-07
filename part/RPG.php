@@ -1,6 +1,6 @@
 <?php
 
-if ( substr(trim($text), 0, 4) === '/rpg' )
+if ( substr($text, 0, 4) === '/rpg' )
 {
 	// * 全局操作
 	if( strlen(trim($text)) > 10 )       // /rpg ATTACK MONSTER
