@@ -1,6 +1,6 @@
 <?php
 
-if ($text == "/pic" || $text == "/pic@gumtakebath_bot") 
+if ($text === "/pic" || $text === "/pic@gumtakebath_bot") 
 {
 	$reply = "输入 /pic [指定tag] 来搜索图片";
 	$content = array('chat_id' => $chat_id, 'text' => $reply);
@@ -8,7 +8,7 @@ if ($text == "/pic" || $text == "/pic@gumtakebath_bot")
 }
 
 
-if ( substr_count($text, "/pic ") == 1 ) 
+if ( substr_count($text, "/pic ") === 1 ) 
 {
 	$tag = substr($text, 5);
 	$get = curl_get_contents("http://danbooru.donmai.us/posts.json?tags=$tag",9);

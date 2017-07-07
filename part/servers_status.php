@@ -1,6 +1,6 @@
 <?php
 
-if ($text == "/server_status" || $text == "/server_status@gumtakebath_bot") 
+if ($text === "/server_status" || $text === "/server_status@gumtakebath_bot") 
 {
 	$s1 = "http://cache.www.gametracker.com/server_info/115.159.120.160:27015/b_560_95_1.png";
 	$s2 = "http://cache.www.gametracker.com/server_info/119.254.111.244:27015/b_560_95_3.png";

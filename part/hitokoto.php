@@ -1,6 +1,6 @@
 <?php
 
-if ($text == "/hitokoto" || $text == "/hitokoto@gumtakebath_bot") 
+if ($text === "/hitokoto" || $text === "/hitokoto@gumtakebath_bot") 
 {
 	$rand = chr(rand(97,100));
 	$get = curl_get_contents("http://api.hitokoto.cn/?c=$rand",9);

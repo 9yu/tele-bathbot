@@ -1,6 +1,6 @@
 <?php
 
-if ($text == "/ifgumhastakenabath" || $text == "/ifgumhastakenabath@gumtakebath_bot") 
+if ($text === "/ifgumhastakenabath" || $text === "/ifgumhastakenabath@gumtakebath_bot") 
 {
 	$reply = "Gum 今天洗澡了吗？";
 	// 不会回复 at 人
@@ -12,7 +12,7 @@ if ($text == "/ifgumhastakenabath" || $text == "/ifgumhastakenabath@gumtakebath_
 	$telegram->sendMessage($content);
 }
 
-if ($text == "/gumisbad" || $text == "/gumisbad@gumtakebath_bot") 
+if ($text === "/gumisbad" || $text === "/gumisbad@gumtakebath_bot") 
 {
 	date_default_timezone_set("Asia/Shanghai");
 	$zone1 = strtotime(date("y-m-d h:i:s"));

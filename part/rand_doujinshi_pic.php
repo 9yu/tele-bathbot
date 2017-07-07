@@ -1,6 +1,6 @@
 <?php
 
-if ($text == "/doujin_pic_random" || $text == "/doujin_pic_random@gumtakebath_bot") 
+if ($text === "/doujin_pic_random" || $text === "/doujin_pic_random@gumtakebath_bot") 
 {
 	$num = rand(930000, 982528);
 	$nump = floor($num/2000);
