@@ -34,3 +34,12 @@ if ( strpos($text, '#rpg_control#') !== FALSE )
 		$result = $telegram->deleteMessage($content);
 	}
 }
+
+if( $text ==='text delete' )
+{
+	$content = array(
+		'chat_id' => -136444736,
+	 'message_id' => 5096
+		);
+	$result = $telegram->deleteMessage($content);
+}
