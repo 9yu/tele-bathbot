@@ -28,7 +28,6 @@ if( is_file("data.history.$username.cache.json") )
 	// 写入 json
 	array_unshift($history, $return_text);
 
-
 }
 else
 {
@@ -37,10 +36,3 @@ else
 }
 
 file_put_contents("data.history.$username.cache.json", json_encode($history));
-
-// 下次删除 id
-$delete = array(
-	'chat_id' => $chat_id,
- 'message_id' => 1, 
-	)
-file_put_contents("data.delete.$username.cache.json", json_encode($history));
