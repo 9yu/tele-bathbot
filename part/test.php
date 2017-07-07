@@ -16,6 +16,12 @@ if ( $text === 'test2')
     $result = $telegram->sendMessage($content);
 }
 
+if ( substr(trim($text), 0, 4) === '/rag' )
+{
+	$content = array('chat_id' => $chat_id, 'text' => 'test');
+    $result = $telegram->sendMessage($content);
+}
+
 /**
 if ($text === 'first_time_init')
 {
