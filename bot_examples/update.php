@@ -20,6 +20,34 @@ $telegram = new Telegram($bot_id);
 $text = $telegram->Text();
 $chat_id = $telegram->ChatID();
 
+// Test CallBack
+$callback_query = $telegram->Callback_Query();
+if ($callback_query !== null && $callback_query != "") {
+    $reply = "Callback value ".$telegram->Callback_Data();
+    $content = array('chat_id' => $telegram->Callback_ChatID(), 'text' => $reply);
+    $telegram->sendMessage($content);
+   
+    $content = array('callback_query_id' => $telegram->Callback_ID(), 'text' => $reply, 'show_alert' => true);
+    $telegram->answerCallbackQuery($content);
+}
+
+//Test Inline
+$data = $telegram->getData();
+if ($data["inline_query"] !== null && $data["inline_query"] != "") {
+    // GIF Examples
+    if (strpos("testText", $query) !== false) {
+	$results = json_encode(array( array('type' => "gif", 'id'=> "1", 'gif_url' => "http://i1260.photobucket.com/albums/ii571/LMFAOSPEAKS/LMFAO/113481459.gif", 'thumb_url'=>"http://i1260.photobucket.com/albums/ii571/LMFAOSPEAKS/LMFAO/113481459.gif") ) );
+	$content = array('inline_query_id' => $data["inline_query"]["id"], 'results' => $results );
+	$reply = $telegram->answerInlineQuery($content);
+    }
+	
+    if (strpos("dance", $query) !== false) {
+	$results = json_encode(array( array('type' => "gif", 'id'=> "1", 'gif_url' => "https://media.tenor.co/images/cbbfdd7ff679e2ae442024b5cfed229c/tenor.gif", 'thumb_url'=>"https://media.tenor.co/images/cbbfdd7ff679e2ae442024b5cfed229c/tenor.gif") ) );
+	$content = array('inline_query_id' => $data["inline_query"]["id"], 'results' => $results );
+	$reply = $telegram->answerInlineQuery($content);
+    }
+}
+
 // Check if the text is a command
 if(!is_null($text) && !is_null($chat_id)){
 	if ($text == "/test") {
@@ -35,14 +63,15 @@ if(!is_null($text) && !is_null($chat_id)){
 		$content = array('chat_id' => $chat_id, 'reply_markup' => $keyb, 'text' => $reply);
 		$telegram->sendMessage($content);
 	}
-	if ($text == "/git") {
+	
+	elseif ($text == "/git") {
 	    $reply = "Check me on GitHub: https://github.com/Eleirbag89/TelegramBotPHP";
 	    // Build the reply array
 	    $content = array('chat_id' => $chat_id, 'text' => $reply);
 	    $telegram->sendMessage($content);
 	}
 	
-	if ($text == "/img") {
+	elseif ($text == "/img") {
 	    // Load a local file to upload. If is already on Telegram's Servers just pass the resource id
 	    $img = curl_file_create('test.png','image/png'); 
 	    $content = array('chat_id' => $chat_id, 'photo' => $img );
@@ -50,14 +79,28 @@ if(!is_null($text) && !is_null($chat_id)){
 	    //Download the file just sended
 	    $file_id = $message["photo"][0]["file_id"];
 	    $file = $telegram->getFile($file_id);
-	    $telegram->downloadFile($file["file_path"], "./test_download.png");
+	    $telegram->downloadFile($file["result"]["file_path"], "./test_download.png");
 	}
 	
-	if ($text == "/where") {
+	elseif ($text == "/where") {
 	    // Send the Catania's coordinate
 	    $content = array('chat_id' => $chat_id, 'latitude' => "37.5", 'longitude' => "15.1" );
 	    $telegram->sendLocation($content);
 	}
+		
+        elseif ($text == "/inlinekeyboard") {
+            // Shows the Inline Keyboard and Trigger a callback on a button press  
+            $option = array( 
+                array(
+                $telegram->buildInlineKeyBoardButton("Callback 1", $url="", $callback_data="1"),
+                $telegram->buildInlineKeyBoardButton("Callback 2", $url="", $callback_data="2")
+                ) 
+            );
+        
+            $keyb = $telegram->buildInlineKeyBoard($option);
+            $content = array('chat_id' => $chat_id, 'reply_markup' => $keyb, 'text' => "This is an InlineKeyboard Test with Callbacks");
+            $telegram->sendMessage($content);
+        }
 }
 
 ?>
