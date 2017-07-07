@@ -7,6 +7,7 @@ if ($text === 'return_param')
     $telegram->sendMessage($content);
 }
 
+/**
 if ($text === 'first_time_init')
 {
 	$content = 'CREATE TABLE bath_monster
@@ -45,8 +46,8 @@ if ($text === 'first_time_init')
 
 	$content = 'CREATE TABLE bath_data
 				(
-				power       	 	 bigint,
-				down_hp_day       	 bigint,
+				heta_power    	 	 bigint,
+				heta_poser_a_day   	 bigint,
 				id        		 	 int
 				)';
 	$insert = pg_query($dbcon, $content);
@@ -56,4 +57,36 @@ if ($text === 'first_time_init')
 	    $telegram->sendMessage($content);
 	}
 }
+**/
 
+if ($text === 'second_init')
+{
+	$content = 'DROP TABLE bath_data';
+	$insert = pg_query($dbcon, $content);
+	if( $insert !== FALSE )
+	{
+		$content = array('chat_id' => $chat_id, 'text' => 'SUCCESS');
+	    $telegram->sendMessage($content);
+	}
+
+	$content = 'CREATE TABLE bath_data
+				(
+				heta_power    	 	 bigint,
+				heta_poser_a_day   	 bigint,
+				id        		 	 int
+				)';
+	$insert = pg_query($dbcon, $content);
+	if( $insert !== FALSE )
+	{
+		$content = array('chat_id' => $chat_id, 'text' => 'SUCCESS');
+	    $telegram->sendMessage($content);
+	}
+
+	$content = 'INSERT INTO bath_data VALUES (0, 0, 1)';
+	$insert = pg_query($dbcon, $content);
+	if( $insert !== FALSE )
+	{
+		$content = array('chat_id' => $chat_id, 'text' => 'SUCCESS');
+	    $telegram->sendMessage($content);
+	}
+}
