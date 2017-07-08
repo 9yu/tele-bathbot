@@ -1,7 +1,7 @@
 <?php
 
-//if ( substr(trim($text), 0, 4) === '/rpg' )
-if( substr_count($text, "/rpg") === 1 )
+if ( substr($text, 0, 4) === '/rpg' )
+//if( substr_count($text, "/rpg") === 1 )
 {
 	include('RPG_test.php');
 	// * 全局操作
