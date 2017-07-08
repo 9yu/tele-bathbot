@@ -240,7 +240,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 
 	}
-/**
+
 	// 3.战斗状态
 	if( $chara['status'] === 'battle' )
 	{
@@ -510,7 +510,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 	}
 
-**/	
+
 
     // 4.无所事事状态
 	if( $chara['status'] === 'home' )
