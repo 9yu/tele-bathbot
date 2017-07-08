@@ -20,9 +20,9 @@ if ($text === "/gumisbad" || $text === "/gumisbad@gumtakebath_bot")
 	$gumtime = ceil(($zone1-$zone2)/86400);
 
 	$heta_power_a_day_date = date('Y.m.d');
-	if( file_exists("../data.heta_power_a_day.$heta_power_a_day_date.cache.json") )
+	if( file_exists("data.heta_power_a_day.$heta_power_a_day_date.cache.json") )
 	{
-		$heta_power_a_day = json_decode(file_get_contents("../data.heta_power_a_day.$heta_power_a_day_date.cache.json"),true);
+		$heta_power_a_day = json_decode(file_get_contents("data.heta_power_a_day.$heta_power_a_day_date.cache.json"),true);
 	}
 	else
 	{
