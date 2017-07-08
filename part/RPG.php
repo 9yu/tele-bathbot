@@ -67,7 +67,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			$return_text = "勇者 $name 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。";
 			//include('RPG_history.php');
 			$content = array(
-							'text'	=> urlencode($return_text),
+							'text'	=> $return_text,
 						 'chat_id'  => $chat_id,
 			 'reply_to_message_id'  => $message_id
 				);
