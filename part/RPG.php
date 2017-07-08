@@ -111,7 +111,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	**/
 		// TEMP TEST PART!!!!!!!
 		$return_text = json_encode($chara);
-		include('RPG_history.php');
+		//include('RPG_history.php');
 		$message_box = array(
 			'chat_id' => $chat_id,
 			'reply_to_message_id' => $message_id,
