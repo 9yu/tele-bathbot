@@ -3,7 +3,7 @@
 //if ( substr(trim($text), 0, 4) === '/rpg' )
 if( substr_count($text, "/rpg") === 1 )
 {
-	include('part/RPG_test.php');
+	include('RPG_test.php');
 	// * 全局操作
 	/**
 	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
@@ -62,14 +62,14 @@ if( substr_count($text, "/rpg") === 1 )
 
 			// * 第一次游戏提示
 			$return_text = "勇者 $name 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。";
-			include('part/RPG_history.php');
+			include('RPG_history.php');
 			$content = array(
 							'text'	=> urlencode($return_all),
 						 'chat_id'  => $chat_id,
 			 'reply_to_message_id'  => $message_id
 				);
 			$result = $telegram->sendMessage($content);
-			include('part/RPG_delete.php');
+			include('RPG_delete.php');
 
 		}
 		else
@@ -114,7 +114,7 @@ if( substr_count($text, "/rpg") === 1 )
 	//
 
 	// 1.探索状态
-	/**
+	
 	if( $chara['status'] === 'explore' )
 	{
 		if( $rpg_param[0] === 'EXPLORE' )
@@ -150,7 +150,7 @@ if( substr_count($text, "/rpg") === 1 )
 						);
 					$keyb = $telegram->buildKeyBoard($option, $onetime = true);
 					$return_text = "污秽不堪的东西逼近过来了…… \n HP: $target_hp \n 力量: $target_str \n 怎么办是好？";
-					include('part/RPG_history.php');
+					include('RPG_history.php');
 					$content = array(
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
@@ -158,7 +158,7 @@ if( substr_count($text, "/rpg") === 1 )
 								'text' => urlencode($return_all)
 						);
 					$result = $telegram->sendMessage($content);
-					include('part/RPG_delete.php');
+					include('RPG_delete.php');
 
 					file_put_contents("data.chara.$username.cache.json", json_encode($chara));
 
@@ -172,7 +172,7 @@ if( substr_count($text, "/rpg") === 1 )
 						);
 					$keyb = $telegram->buildKeyBoard($option, $onetime = true);
 					$return_text = "渐渐走得有些远了……";
-					include('part/RPG_history.php');
+					include('RPG_history.php');
 					$content = array(
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
@@ -180,7 +180,7 @@ if( substr_count($text, "/rpg") === 1 )
 								'text' => urlencode($return_all)
 						);
 					$result = $telegram->sendMessage($content);
-					include('part/RPG_delete.php');
+					include('RPG_delete.php');
 				}
 			}
 			// IT 结束
@@ -243,14 +243,14 @@ if( substr_count($text, "/rpg") === 1 )
 
 						// 回复用户
 						$return_text = "胜利了！…… \n 等级 + 1，HP + 10，力量 + 20 \n 现在的属性： \n 等级 $chara['level'] \n HP $chara['max_hp'] \n 力量 $chara['str'] \n [胜利]风尘再次扬起…… \n 【污】垢力下降 $target_details['max_hp'] 点";
-						include('part/RPG_history.php');
+						include('RPG_history.php');
 						$content = array(
 									'chat_id' => $chat_id, 
 						'reply_to_message_id' => $message_id,
 									'text' => urlencode($return_all)
 							);
 						$result = $telegram->sendMessage($content);
-						include('part/RPG_delete.php');
+						include('RPG_delete.php');
 
 					}
 					else
@@ -264,14 +264,14 @@ if( substr_count($text, "/rpg") === 1 )
 
 							// 回复用户
 							$return_text = "怪物突然行动起来…… \n $name 受到了 $target_details['str'] 点伤害 \n [死亡]尸骨横野……风尘扬起……";
-							include('part/RPG_history.php');
+							include('RPG_history.php');
 							$content = array(
 										'chat_id' => $chat_id, 
 							'reply_to_message_id' => $message_id,
 										'text' => urlencode($return_all)
 								);
 							$result = $telegram->sendMessage($content);
-							include('part/RPG_delete.php');
+							include('RPG_delete.php');
 						}
 						else // 没被打死
 						{
@@ -286,7 +286,7 @@ if( substr_count($text, "/rpg") === 1 )
 								);
 							$keyb = $telegram->buildKeyBoard($option, $onetime = true);
 							$return_text = "怪物突然行动起来…… \n $name 受到了 $target_details['str'] 点伤害";
-							include('part/RPG_history.php');
+							include('RPG_history.php');
 							$content = array(
 										'chat_id' => $chat_id, 
 							'reply_to_message_id' => $message_id,
@@ -294,7 +294,7 @@ if( substr_count($text, "/rpg") === 1 )
 										'text' => urlencode($return_all)
 								);
 							$result = $telegram->sendMessage($content);
-							include('part/RPG_delete.php');
+							include('RPG_delete.php');
 						}
 					}
 				} // 攻击结束
@@ -312,7 +312,7 @@ if( substr_count($text, "/rpg") === 1 )
 						);
 					$keyb = $telegram->buildKeyBoard($option, $onetime = true);
 					$return_text = "躲在了废墟背后，似乎没发生什么……";
-					include('part/RPG_history.php');
+					include('RPG_history.php');
 					$content = array(
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
@@ -320,7 +320,7 @@ if( substr_count($text, "/rpg") === 1 )
 								'text' => urlencode($return_all)
 						);
 					$result = $telegram->sendMessage($content);
-					include('part/RPG_delete.php');
+					include('RPG_delete.php');
 
 					file_put_contents("data.chara.$username.cache.json", json_encode($chara));
 				}
@@ -333,14 +333,14 @@ if( substr_count($text, "/rpg") === 1 )
 
 					// 回复用户
 					$return_text = "迅速的往回跑了……似乎没有追上来……";
-					include('part/RPG_history.php');
+					include('RPG_history.php');
 					$content = array(
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
 								'text' => urlencode($return_all)
 						);
 					$result = $telegram->sendMessage($content);
-					include('part/RPG_delete.php');
+					include('RPG_delete.php');
 				}
 
 
@@ -377,14 +377,14 @@ if( substr_count($text, "/rpg") === 1 )
 
 						// 回复用户
 						$return_text = "胜利了！…… \n 等级 + 1，HP + 10，力量 + 20 \n 现在的属性： \n 等级 $chara['level'] \n HP $chara['max_hp'] \n 力量 $chara['str'] \n [胜利]风尘再次扬起…… \n 【污】垢力下降 $target_details['max_hp'] 点";
-						include('part/RPG_history.php');
+						include('RPG_history.php');
 						$content = array(
 									'chat_id' => $chat_id, 
 						'reply_to_message_id' => $message_id,
 									'text' => urlencode($return_all)
 							);
 						$result = $telegram->sendMessage($content);
-						include('part/RPG_delete.php');
+						include('RPG_delete.php');
 
 
 					}
@@ -401,7 +401,7 @@ if( substr_count($text, "/rpg") === 1 )
 							);
 						$keyb = $telegram->buildKeyBoard($option, $onetime = true);
 						$return_text = "攻击造成 $chara['str'] 点伤害 \n 怪物血量 $target_details['remain_hp'] / $target_details['max_hp'] \n 怪物一动不动的……";
-						include('part/RPG_history.php');
+						include('RPG_history.php');
 						$content = array(
 									'chat_id' => $chat_id, 
 						'reply_to_message_id' => $message_id,
@@ -409,7 +409,7 @@ if( substr_count($text, "/rpg") === 1 )
 									'text' => urlencode($return_all)
 							);
 						$result = $telegram->sendMessage($content);
-						include('part/RPG_delete.php');
+						include('RPG_delete.php');
 
 						file_put_contents("data.chara.$username.cache.json", json_encode($chara));
 
@@ -429,7 +429,7 @@ if( substr_count($text, "/rpg") === 1 )
 						);
 					$keyb = $telegram->buildKeyBoard($option, $onetime = true);
 					$return_text = "躲在了废墟背后，似乎没发生什么……";
-					include('part/RPG_history.php');
+					include('RPG_history.php');
 					$content = array(
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
@@ -437,7 +437,7 @@ if( substr_count($text, "/rpg") === 1 )
 								'text' => urlencode($return_all)
 						);
 					$result = $telegram->sendMessage($content);
-					include('part/RPG_delete.php');
+					include('RPG_delete.php');
 
 					file_put_contents("data.chara.$username.cache.json", json_encode($chara));
 				}
@@ -450,14 +450,14 @@ if( substr_count($text, "/rpg") === 1 )
 
 					// 回复用户
 					$return_text = "迅速的往回跑了……似乎没有追上来……";
-					include('part/RPG_history.php');
+					include('RPG_history.php');
 					$content = array(
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
 								'text' => urlencode($return_all)
 						);
 					$result = $telegram->sendMessage($content);
-					include('part/RPG_delete.php');
+					include('RPG_delete.php');
 				}
 
 				
@@ -477,7 +477,7 @@ if( substr_count($text, "/rpg") === 1 )
 			);
 		$keyb = $telegram->buildKeyBoard($option, $onetime = true);
 		$return_text = "“又来到了这脏乱之地。”";
-		include('part/RPG_history.php');
+		include('RPG_history.php');
 		$content = array(
 					'chat_id' => $chat_id, 
 		'reply_to_message_id' => $message_id,
@@ -485,21 +485,21 @@ if( substr_count($text, "/rpg") === 1 )
 					'text' => urlencode($return_all)
 			);
 		$result = $telegram->sendMessage($content);
-		include('part/RPG_delete.php');
+		include('RPG_delete.php');
 	}
 
 	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
 	{
 
 		$return_text = "Level: $chara['level'] \n HP: $chara['max_hp'] \n 剩余 HP: $chara['remain_hp'] \n 力量: $chara['str']";
-		include('part/RPG_history.php');
+		include('RPG_history.php');
 		$content = array(
 					'chat_id' => $chat_id, 
 		'reply_to_message_id' => $message_id,
 					'text' => urlencode($return_all)
 			);
 		$result = $telegram->sendMessage($content);
-		include('part/RPG_delete.php');
+		include('RPG_delete.php');
 	}
 
 	if( $rpg_param[0] === 'EXIT' && $rpg_param[1] === 'GAME')
@@ -508,6 +508,6 @@ if( substr_count($text, "/rpg") === 1 )
 		unlink("data.chara.$username.cache.json");
 	}
 
+	
 	**/
-
 }
