@@ -18,7 +18,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			$rpg_param = explode(' ', $rpg_param);  // 数组
 		}
 	}
-/**
+
 	// * 快捷处理
 	$username = $data['message']['from']['username'];
 	$name = $data['message']['from']['first_name'];
@@ -46,7 +46,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	{
 		// 2. 查询数据库
 		$db_param = "SELECT * FROM bath_user WHERE username = " . "'" . $username . "'";
-		$db_chara = pg_query($dbcon, $db_param) or exit;
+		$db_chara = pg_query($dbcon, $db_param);
 
 		if (pg_num_rows($db_chara) == 0) 
 		{
@@ -74,14 +74,16 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 		else
 		{
-			$row = pg_fetch_array($db_chara);
-			$chara['level'] = (int)$row['level'];
-			$chara['max_hp'] = (int)$row['hp'];
-			$chara['remain_hp'] = (int)$row['hp'];
-			$chara['str'] = (int)$row['strength'];
-			$chara['status'] = null;
-			$chara['target'] = null;
-			$chara['turn'] = null;
+			while ( $row = pg_fetch_array($db_chara) )
+			{
+				$chara['level'] = (int)$row['level'];
+				$chara['max_hp'] = (int)$row['hp'];
+				$chara['remain_hp'] = (int)$row['hp'];
+				$chara['str'] = (int)$row['strength'];
+				$chara['status'] = null;
+				$chara['target'] = null;
+				$chara['turn'] = null;
+			}
 
 		}
 
@@ -103,12 +105,12 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$db_insert = pg_query($dbcon, $db_insert);
 
 	}
-**/
+
 		// TEMP TEST PART!!!!!!!
 		$message_box = array(
 			'chat_id' => $chat_id,
 			'reply_to_message_id' => $message_id,
-			'text' => 'json_encode($chara)'
+			'text' => json_encode($chara)
 			);
 		$telegram->sendMessage($message_box);
 
