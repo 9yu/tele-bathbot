@@ -64,5 +64,5 @@ if ( !is_null($text) && !is_null($chat_id) )
 	//include('part/servers_status.php');
 
 	// RPG
-	//include('part/RPG.php');
+	include('part/RPG.php');
 }
