@@ -466,7 +466,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 	}
 
-
+	**/
     // 3.无所事事状态
 	if( $chara['status'] === null )
 	{
@@ -488,7 +488,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$result = $telegram->sendMessage($content);
 		include('RPG_delete.php');
 	}
-
+	
 	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
 	{
 
@@ -509,6 +509,6 @@ if ( substr($text, 0, 4) === '/rpg' )
 		unlink("data.chara.$username.cache.json");
 	}
 
-	**/
+	
 	
 }
