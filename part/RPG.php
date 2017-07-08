@@ -115,6 +115,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	}
 	
 		// TEMP TEST PART!!!!!!!
+	/**
 		$return_text = json_encode($rpg_param);
 		include('RPG_history.php');
 		$message_box = array(
@@ -125,7 +126,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$result = $telegram->sendMessage($message_box);
 		include('RPG_delete.php');
 
-
+**/
 	
 	//
 	// END 一、角色属性查询
@@ -213,7 +214,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 		if( $rpg_param[0] === 'RETURN' && $rpg_param[1] === 'BACK' )
 		{
-			$chara['status'] = null;
+			$chara['status'] = 'home';
 		}
 
 	}
@@ -245,7 +246,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$chara['level'] = $chara['level'] + 1;
 						$chara['str'] = $chara['str'] + 20;
 						$chara['max_hp'] = $chara['max_hp'] + 10;
-						$chara['status'] = null;
+						$chara['status'] = 'home';
 
 						// 写入数据库
 						$db_insert = "UPDATE bath_user SET type = 'yuusya', hp = " . $chara['max_hp'] . ", strength = " . $chara['str'] . ", level = " . $chara['level'] . ", name = '" . $name ."' WHERE username = '" . $username . "'";
@@ -350,7 +351,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 				if ( $rpg_param[0] === 'ESCAPE' )
 				{
 					$chara['turn'] = null;
-					$chara['status'] = null;
+					$chara['status'] = 'home';
 					$chara['target'] = null;
 
 					// 回复用户
@@ -379,7 +380,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$chara['level'] = $chara['level'] + 1;
 						$chara['str'] = $chara['str'] + 20;
 						$chara['max_hp'] = $chara['max_hp'] + 10;
-						$chara['status'] = null;
+						$chara['status'] = 'home';
 
 						// 写入数据库
 						$db_insert = "UPDATE bath_user SET type = 'yuusya', hp = " . $chara['max_hp'] . ", strength = " . $chara['str'] . ", level = " . $chara['level'] . ", name = '" . $name ."' WHERE username = '" . $username . "'";
@@ -467,7 +468,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 				if ( $rpg_param[0] === 'ESCAPE' )
 				{
 					$chara['turn'] = null;
-					$chara['status'] = null;
+					$chara['status'] = 'home';
 					$chara['target'] = null;
 
 					// 回复用户
