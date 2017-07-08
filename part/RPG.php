@@ -115,7 +115,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$message_box = array(
 			'chat_id' => $chat_id,
 			'reply_to_message_id' => $message_id,
-			'text' => $return_all
+			'text' => $return_text
 			);
 		$result = $telegram->sendMessage($message_box);
 		//include('RPG_delete.php');
