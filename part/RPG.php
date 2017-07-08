@@ -29,10 +29,10 @@ if ( substr($text, 0, 4) === '/rpg' )
 	//
 
 	$chara = array();
-
+	/**
 	    //  1. 查询缓存
-	if( file_exists("data.chara.$username.cache.json") )
-	{
+	//if( file_exists("data.chara.$username.cache.json") )
+	//{
 		$fs_chara = json_decode( file_get_contents("data.chara.$username.cache.json"), true);
 		$chara['level'] = $fs_chara['level']; 			// 等级
 		$chara['max_hp'] = $fs_chara['max_hp'];		    // MAX HP
@@ -41,9 +41,11 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$chara['status'] = $fs_chara['status'];         // 状态
 		$chara['target'] = $fs_chara['target'];         // 行为目标
 		$chara['turn'] = $fs_chara['turn'];				// 第几回合
-	}
-	else
-	{
+	//}
+	//else
+	//{
+
+	
 		// 2. 查询数据库
 		$db_param = "SELECT * FROM bath_user WHERE username = " . "'" . $username . "'";
 		$db_chara = pg_query($dbcon, $db_param);
@@ -52,6 +54,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		{
 			// * 角色第一次游戏
 			// 初始化 hp = 10 , strength = 20 , level = 1
+			**/
 			$chara['level'] = 1;
 			$chara['max_hp'] = 10;
 			$chara['remain_hp'] = 10;
@@ -59,7 +62,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			$chara['status'] = null;
 			$chara['target'] = null;
 			$chara['turn'] = null;
-
+			/**
 			// * 第一次游戏提示
 			$return_text = "勇者 $name 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。";
 			//include('RPG_history.php');
@@ -105,7 +108,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$db_insert = pg_query($dbcon, $db_insert);
 
 	}
-
+	**/
 		// TEMP TEST PART!!!!!!!
 		$message_box = array(
 			'chat_id' => $chat_id,
