@@ -29,7 +29,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	//
 
 	$chara = array();
-	
+	/**
 	    //  1. 查询缓存
 	if( file_exists("data.chara.$username.cache.json") )
 	{
@@ -108,7 +108,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		//$db_insert = pg_query($dbcon, $db_insert);
 
 	}
-	
+	**/
 		// TEMP TEST PART!!!!!!!
 		$return_text = json_encode($chara);
 		include('RPG_history.php');
