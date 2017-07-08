@@ -3,6 +3,7 @@
 if( file_exists("data.history.$username.cache.json") )
 {
 	// 有历史记录
+	/**
 	$history = json_decode( file_get_contents("data.history.$username.cache.json"), true);
 	// 保存 16 个数据
 	if ( count($history) > 8 )
@@ -27,7 +28,9 @@ if( file_exists("data.history.$username.cache.json") )
 
 	// 写入 json
 	array_unshift($history, $return_text);
-
+	**/
+	$return_all = $return_text;
+	$history = array($return_text);
 }
 else
 {
