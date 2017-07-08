@@ -136,7 +136,29 @@ if ( substr($text, 0, 4) === '/rpg' )
 	// 二、角色行为判断
 	//
 
-	// 1.探索状态
+	// 1.行为状态
+	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
+	{
+
+		$return_text = "Level: " . $chara['level'] . " \n HP: " . $chara['max_hp'] . "  \n 剩余 HP: " . $chara['remain_hp'] . "\n 力量: " . $chara['str'];
+		include('RPG_history.php');
+		$content = array(
+					'chat_id' => $chat_id, 
+		'reply_to_message_id' => $message_id,
+					'text' => $return_all
+			);
+		$result = $telegram->sendMessage($content);
+		include('RPG_delete.php');
+		exit;
+	}
+
+	if( $rpg_param[0] === 'EXPLORE' && $chara['status'] === 'home' )
+	{
+		$chara['status'] = 'explore';
+	}
+
+
+	// 2.探索状态
 	
 	if( $chara['status'] === 'explore' )
 	{
@@ -219,7 +241,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 	}
 /**
-	// 2.战斗状态
+	// 3.战斗状态
 	if( $chara['status'] === 'battle' )
 	{
 		if ( $chara['target'] === 'monster') {
@@ -490,26 +512,10 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 **/	
 
-	// 3.行为状态
-	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
-	{
-
-		$return_text = "Level: " . $chara['level'] . " \n HP: " . $chara['max_hp'] . "  \n 剩余 HP: " . $chara['remain_hp'] . "\n 力量: " . $chara['str'];
-		include('RPG_history.php');
-		$content = array(
-					'chat_id' => $chat_id, 
-		'reply_to_message_id' => $message_id,
-					'text' => $return_all
-			);
-		$result = $telegram->sendMessage($content);
-		include('RPG_delete.php');
-		exit;
-	}
-
-
     // 4.无所事事状态
 	if( $chara['status'] === 'home' )
 	{
+
 		// 显示主菜单
 		$option = array(
 			array($telegram->buildKeyboardButton("/rpg EXPLORE IT")),
@@ -527,6 +533,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			);
 		$result = $telegram->sendMessage($content);
 		include('RPG_delete.php');
+
 	}
 	
 }
