@@ -104,8 +104,8 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 		file_put_contents("data.chara.$username.cache.json", json_encode($chara));
 
-		$db_insert = "INSERT INTO bath_user VALUES ('yuusya', " . $chara['max_hp'] . ", " . $chara['str'] . ", " . $chara['level'] . ", '" . $username . "', '" . $name ."')";
-		$db_insert = pg_query($dbcon, $db_insert);
+		//$db_insert = "INSERT INTO bath_user VALUES ('yuusya', " . $chara['max_hp'] . ", " . $chara['str'] . ", " . $chara['level'] . ", '" . $username . "', '" . $name ."')";
+		//$db_insert = pg_query($dbcon, $db_insert);
 
 	}
 	
