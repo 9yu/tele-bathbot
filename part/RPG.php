@@ -113,6 +113,7 @@ if( substr_count($text, "/rpg") === 1 )
 	//
 
 	// 1.探索状态
+	/**
 	if( $chara['status'] === 'explore' )
 	{
 		if( $rpg_param[0] === 'EXPLORE' )
@@ -506,6 +507,6 @@ if( substr_count($text, "/rpg") === 1 )
 		unlink("data.chara.$username.cache.json");
 	}
 
-
+	**/
 
 }
