@@ -3,9 +3,9 @@
 if ( substr($text, 0, 4) === '/rpg' )
 //if( substr_count($text, "/rpg") === 1 )
 {
-	include('RPG_test.php');
+	//include('RPG_test.php');
 	// * 全局操作
-	/**
+	
 	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
 	{
 		$rpg_param = substr(trim($text), 4);
@@ -509,5 +509,5 @@ if ( substr($text, 0, 4) === '/rpg' )
 	}
 
 	
-	**/
+	
 }
