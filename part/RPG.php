@@ -64,15 +64,15 @@ if ( substr($text, 0, 4) === '/rpg' )
 			$chara['turn'] = null;
 
 			// * 第一次游戏提示
-			$return_text = "勇者 $name 大人，恭候多时了。\n……可惜，如今挥剑恐怕也改变不了什么了。";
-			//include('RPG_history.php');
+			$return_text = "勇者 $name 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。";
+			include('RPG_history.php');
 			$content = array(
-							'text'	=> $return_text,
+							'text'	=> $return_all,
 						 'chat_id'  => $chat_id,
 			 'reply_to_message_id'  => $message_id
 				);
 			$result = $telegram->sendMessage($content);
-			//include('RPG_delete.php');
+			include('RPG_delete.php');
 
 		}
 		else
@@ -110,12 +110,15 @@ if ( substr($text, 0, 4) === '/rpg' )
 	}
 	
 		// TEMP TEST PART!!!!!!!
+		$return_text = json_encode($chara);
+		include('RPG_history.php');
 		$message_box = array(
 			'chat_id' => $chat_id,
 			'reply_to_message_id' => $message_id,
-			'text' => json_encode($chara)
+			'text' => $return_all
 			);
-		$telegram->sendMessage($message_box);
+		$result = $telegram->sendMessage($message_box);
+		include('RPG_delete.php');
 
 
 	/**
