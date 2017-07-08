@@ -7,7 +7,7 @@ if( file_exists("data.history.$username.cache.json") )
 	{
 		// 0 -7 共 8 条
 		$return_all = "";
-		$return_all .= $history[9] . "\n……\n";
+		$return_all .= $history[count($history) - 1] . "\n……\n";
 		for ( $i = 7 ; $i >= 0; $i -- )  
 		{ 
 			$return_all .= $history[$i] . "\n";
