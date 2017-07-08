@@ -29,7 +29,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	//
 
 	$chara = array();
-	/**
+	
 	    //  1. 查询缓存
 	if( file_exists("data.chara.$username.cache.json") )
 	{
@@ -72,7 +72,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			 'reply_to_message_id'  => $message_id
 				);
 			$result = $telegram->sendMessage($content);
-			//include('RPG_delete.php');
+			include('RPG_delete.php');
 
 		}
 		else
@@ -104,11 +104,11 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 		file_put_contents("data.chara.$username.cache.json", json_encode($chara));
 
-		//$db_insert = "INSERT INTO bath_user VALUES ('yuusya', $chara['max_hp'], $chara['str'], $chara['level'], ". "\'" . $username . "', " . "'" . $name ."')";
-		//$db_insert = pg_query($dbcon, $db_insert);
+		$db_insert = "INSERT INTO bath_user VALUES ('yuusya', $chara['max_hp'], $chara['str'], $chara['level'], ". "'" . $username . "', '" . $name ."')";
+		$db_insert = pg_query($dbcon, $db_insert);
 
 	}
-	**/
+	
 		// TEMP TEST PART!!!!!!!
 		$return_text = json_encode($chara);
 		include('RPG_history.php');
@@ -121,7 +121,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		include('RPG_delete.php');
 
 
-	/**
+	
 	//
 	// END 一、角色属性查询
 	//
@@ -172,7 +172,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
 								'reply_markup' => $keyb, 
-								'text' => urlencode($return_all)
+								'text' => $return_all
 						);
 					$result = $telegram->sendMessage($content);
 					include('RPG_delete.php');
@@ -194,7 +194,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
 								'reply_markup' => $keyb, 
-								'text' => urlencode($return_all)
+								'text' => $return_all
 						);
 					$result = $telegram->sendMessage($content);
 					include('RPG_delete.php');
@@ -264,7 +264,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$content = array(
 									'chat_id' => $chat_id, 
 						'reply_to_message_id' => $message_id,
-									'text' => urlencode($return_all)
+									'text' => $return_all
 							);
 						$result = $telegram->sendMessage($content);
 						include('RPG_delete.php');
@@ -285,7 +285,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 							$content = array(
 										'chat_id' => $chat_id, 
 							'reply_to_message_id' => $message_id,
-										'text' => urlencode($return_all)
+										'text' => $return_all
 								);
 							$result = $telegram->sendMessage($content);
 							include('RPG_delete.php');
@@ -308,7 +308,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 										'chat_id' => $chat_id, 
 							'reply_to_message_id' => $message_id,
 								   'reply_markup' => $keyb, 
-										'text' => urlencode($return_all)
+										'text' => $return_all
 								);
 							$result = $telegram->sendMessage($content);
 							include('RPG_delete.php');
@@ -334,7 +334,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
 						'reply_markup' => $keyb,
-								'text' => urlencode($return_all)
+								'text' => $return_all
 						);
 					$result = $telegram->sendMessage($content);
 					include('RPG_delete.php');
@@ -354,7 +354,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 					$content = array(
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
-								'text' => urlencode($return_all)
+								'text' => $return_all
 						);
 					$result = $telegram->sendMessage($content);
 					include('RPG_delete.php');
@@ -398,7 +398,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$content = array(
 									'chat_id' => $chat_id, 
 						'reply_to_message_id' => $message_id,
-									'text' => urlencode($return_all)
+									'text' => $return_all
 							);
 						$result = $telegram->sendMessage($content);
 						include('RPG_delete.php');
@@ -423,7 +423,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 									'chat_id' => $chat_id, 
 						'reply_to_message_id' => $message_id,
 									'reply_markup' => $keyb,
-									'text' => urlencode($return_all)
+									'text' => $return_all
 							);
 						$result = $telegram->sendMessage($content);
 						include('RPG_delete.php');
@@ -451,7 +451,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
 						'reply_markup' => $keyb,
-								'text' => urlencode($return_all)
+								'text' => $return_all
 						);
 					$result = $telegram->sendMessage($content);
 					include('RPG_delete.php');
@@ -471,7 +471,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 					$content = array(
 								'chat_id' => $chat_id, 
 					'reply_to_message_id' => $message_id,
-								'text' => urlencode($return_all)
+								'text' => $return_all
 						);
 					$result = $telegram->sendMessage($content);
 					include('RPG_delete.php');
@@ -499,7 +499,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 					'chat_id' => $chat_id, 
 		'reply_to_message_id' => $message_id,
 					'reply_markup' => $keyb, 
-					'text' => urlencode($return_all)
+					'text' => $return_all
 			);
 		$result = $telegram->sendMessage($content);
 		include('RPG_delete.php');
@@ -513,7 +513,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$content = array(
 					'chat_id' => $chat_id, 
 		'reply_to_message_id' => $message_id,
-					'text' => urlencode($return_all)
+					'text' => $return_all
 			);
 		$result = $telegram->sendMessage($content);
 		include('RPG_delete.php');
@@ -525,6 +525,6 @@ if ( substr($text, 0, 4) === '/rpg' )
 		unlink("data.chara.$username.cache.json");
 	}
 
-	**/
+	
 	
 }
