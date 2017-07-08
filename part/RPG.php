@@ -131,7 +131,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	//
 
 	// 1.探索状态
-	
+	/**
 	if( $chara['status'] === 'explore' )
 	{
 		if( $rpg_param[0] === 'EXPLORE' )
@@ -526,5 +526,5 @@ if ( substr($text, 0, 4) === '/rpg' )
 	}
 
 	
-	
+	**/
 }
