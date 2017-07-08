@@ -505,6 +505,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		include('RPG_delete.php');
 	}
 	
+	/**
 	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
 	{
 
@@ -524,7 +525,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		unlink("data.target.$username.cache.json");
 		unlink("data.chara.$username.cache.json");
 	}
-
+**/
 	
 	
 }
