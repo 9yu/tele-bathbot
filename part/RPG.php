@@ -29,7 +29,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	{
 		unlink("data.target.$username.cache.json");
 		unlink("data.chara.$username.cache.json");
-		unlink("data.history.$username.cache.json")
+		unlink("data.history.$username.cache.json");
 		exit;
 	}
 
@@ -70,7 +70,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			$chara['turn'] = null;
 
 			// * 第一次游戏提示
-			$return_text = "勇者 $name 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。";
+			$return_text = "勇者 ". $name . " 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。";
 			include('RPG_history.php');
 			$content = array(
 							'text'	=> $return_all,
@@ -241,7 +241,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 
 	}
-/**
+
 	// 3.战斗状态
 	if( $chara['status'] === 'battle' )
 	{
@@ -288,7 +288,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						unlink("data.chara.$username.cache.json");
 
 						// 回复用户
-						$return_text = "胜利了！…… \n 等级 + 1，HP + 10，力量 + 20 \n 现在的属性： \n 等级 $chara['level'] \n HP $chara['max_hp'] \n 力量 $chara['str'] \n [胜利]风尘再次扬起…… \n 【污】垢力下降 $target_details['max_hp'] 点";
+						$return_text = "胜利了！…… \n 等级 + 1，HP + 10，力量 + 20 \n 现在的属性： \n 等级 " . $chara['level'] . "\n HP " . $chara['max_hp'] . "\n 力量 " . $chara['str'] . "\n [胜利]风尘再次扬起…… \n 【污】垢力下降 " . $target_details['max_hp'] . " 点";
 						include('RPG_history.php');
 						$content = array(
 									'chat_id' => $chat_id, 
@@ -309,7 +309,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 							unlink("data.chara.$username.cache.json");
 
 							// 回复用户
-							$return_text = "怪物突然行动起来…… \n $name 受到了 $target_details['str'] 点伤害 \n [死亡]尸骨横野……风尘扬起……";
+							$return_text = "怪物突然行动起来…… \n " . $name . " 受到了 " . $target_details['str'] . " 点伤害 \n [死亡]尸骨横野……风尘扬起……";
 							include('RPG_history.php');
 							$content = array(
 										'chat_id' => $chat_id, 
@@ -331,7 +331,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 								array($telegram->buildKeyboardButton("/rpg ESCAPE !!"))
 								);
 							$keyb = $telegram->buildKeyBoard($option, $onetime = true);
-							$return_text = "怪物突然行动起来…… \n $name 受到了 $target_details['str'] 点伤害";
+							$return_text = "怪物突然行动起来…… \n " . $name . " 受到了 ". $target_details['str'] . " 点伤害";
 							include('RPG_history.php');
 							$content = array(
 										'chat_id' => $chat_id, 
@@ -422,7 +422,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						unlink("data.chara.$username.cache.json");
 
 						// 回复用户
-						$return_text = "胜利了！…… \n 等级 + 1，HP + 10，力量 + 20 \n 现在的属性： \n 等级 $chara['level'] \n HP $chara['max_hp'] \n 力量 $chara['str'] \n [胜利]风尘再次扬起…… \n 【污】垢力下降 $target_details['max_hp'] 点";
+						$return_text = "胜利了！…… \n 等级 + 1，HP + 10，力量 + 20 \n 现在的属性： \n 等级 " . $chara['level'] . "\n HP " . $chara['max_hp'] . "\n 力量 " . $chara['str'] . "\n [胜利]风尘再次扬起…… \n 【污】垢力下降 " . $target_details['max_hp'] . " 点";
 						include('RPG_history.php');
 						$content = array(
 									'chat_id' => $chat_id, 
@@ -446,7 +446,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 							array($telegram->buildKeyboardButton("/rpg ESCAPE !!"))
 							);
 						$keyb = $telegram->buildKeyBoard($option, $onetime = true);
-						$return_text = "攻击造成 $chara['str'] 点伤害 \n 怪物血量 $target_details['remain_hp'] / $target_details['max_hp'] \n 怪物一动不动的……";
+						$return_text = "攻击造成 ". $chara['str'] . " 点伤害 \n 怪物血量 ". $target_details['remain_hp']. " / " . $target_details['max_hp'] . "\n 怪物一动不动的……";
 						include('RPG_history.php');
 						$content = array(
 									'chat_id' => $chat_id, 
@@ -511,7 +511,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 	}
 
-**/	
+
 
     // 4.无所事事状态
 	if( $chara['status'] === 'home' )
