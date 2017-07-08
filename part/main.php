@@ -22,7 +22,7 @@ if ($text === "/gumisbad" || $text === "/gumisbad@gumtakebath_bot")
 	$heta_power_a_day_date = date('Y.m.d');
 	if( file_exists("../data.heta_power_a_day.$heta_power_a_day_date.cache.json") )
 	{
-		$heta_power_a_day = json_decode(file_get_contents("data.heta_power_a_day.$heta_power_a_day_date.cache.json"),true);
+		$heta_power_a_day = json_decode(file_get_contents("../data.heta_power_a_day.$heta_power_a_day_date.cache.json"),true);
 	}
 	else
 	{
@@ -40,12 +40,12 @@ if ($text === "/gumisbad" || $text === "/gumisbad@gumtakebath_bot")
 	if( $jian <= 0 )
 	{
 		$jian_behave = $heta_power_a_day - 600;
-		$reply = "Gum 的脏力点数为 " . $power . "点（今日下降 ". $jian_behave ."），已经有 " . $gumtime . " 天没有洗澡了。";
+		$reply = "Gum 的脏力点数为 " . $heta_power . "点（今日下降 ". $jian_behave ."），已经有 " . $gumtime . " 天没有洗澡了。";
 	}
 	else
 	{
 		$jian_behave = 600 - $heta_power_a_day;
-		$reply = "Gum 的脏力点数为 " . $power . "点（今日增加 ". $jian_behave ."），已经有 " . $gumtime . " 天没有洗澡了。";
+		$reply = "Gum 的脏力点数为 " . $heta_power . "点（今日增加 ". $jian_behave ."），已经有 " . $gumtime . " 天没有洗澡了。";
 	}
 
 	$content = array('chat_id' => $chat_id, 'text' => $reply);
