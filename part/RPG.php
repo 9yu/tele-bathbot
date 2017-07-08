@@ -29,6 +29,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	{
 		unlink("data.target.$username.cache.json");
 		unlink("data.chara.$username.cache.json");
+		unlink("data.history.$username.cache.json")
 		exit;
 	}
 
