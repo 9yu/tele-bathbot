@@ -277,6 +277,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 
 						$db_search = "SELECT * FROM bath_data WHERE id = 1";
+						$db_search = pg_query($dbcon, $db_search);
 						$row = pg_fetch_array($db_search);
 						$heta_power = (int)$row['heta_power'] + $target_details['max_hp'];
 
@@ -429,6 +430,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 
 						$db_search = "SELECT * FROM bath_data WHERE id = 1";
+						$db_search = pg_query($dbcon, $db_search);
 						$row = pg_fetch_array($db_search);
 						$heta_power = (int)$row['heta_power'] + $target_details['max_hp'];
 
