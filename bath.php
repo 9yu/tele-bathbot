@@ -46,7 +46,7 @@ if ( $dbcon === FALSE )
 if ( !is_null($text) && !is_null($chat_id) )
 {
 	// TESTING!
-	//include('part/test.php');
+	include('part/test.php');
 
 	// 次数统计 & 快速回复
 	include('part/main.php');
