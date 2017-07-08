@@ -24,6 +24,15 @@ if ( substr($text, 0, 4) === '/rpg' )
 	// 一、角色属性查询
 	//
 
+	// 一键退出
+	if( $rpg_param[0] === 'EXIT' && $rpg_param[1] === 'GAME')
+	{
+		unlink("data.target.$username.cache.json");
+		unlink("data.chara.$username.cache.json");
+		exit;
+	}
+
+
 	$chara = array();
 	
 	    //  1. 查询缓存
@@ -127,7 +136,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	//
 
 	// 1.探索状态
-	/**
+	
 	if( $chara['status'] === 'explore' )
 	{
 		if( $rpg_param[0] === 'EXPLORE' )
@@ -478,8 +487,26 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 	}
 
-	**/
-    // 3.无所事事状态
+	
+
+	// 3.行为状态
+	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
+	{
+
+		$return_text = "Level: " . $chara['level'] . " \n HP: " . $chara['max_hp'] . "  \n 剩余 HP: " . $chara['remain_hp'] . "\n 力量: " . $chara['str'];
+		include('RPG_history.php');
+		$content = array(
+					'chat_id' => $chat_id, 
+		'reply_to_message_id' => $message_id,
+					'text' => $return_all
+			);
+		$result = $telegram->sendMessage($content);
+		include('RPG_delete.php');
+		exit;
+	}
+
+
+    // 4.无所事事状态
 	if( $chara['status'] === 'home' )
 	{
 		// 显示主菜单
@@ -500,28 +527,5 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$result = $telegram->sendMessage($content);
 		include('RPG_delete.php');
 	}
-	
-	
-	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
-	{
-
-		$return_text = "Level: " . $chara['level'] . " \n HP: " . $chara['max_hp'] . "  \n 剩余 HP: " . $chara['remain_hp'] . "\n 力量: " . $chara['str'];
-		include('RPG_history.php');
-		$content = array(
-					'chat_id' => $chat_id, 
-		'reply_to_message_id' => $message_id,
-					'text' => $return_all
-			);
-		$result = $telegram->sendMessage($content);
-		include('RPG_delete.php');
-	}
-
-	if( $rpg_param[0] === 'EXIT' && $rpg_param[1] === 'GAME')
-	{
-		unlink("data.target.$username.cache.json");
-		unlink("data.chara.$username.cache.json");
-	}
-
-	
 	
 }
