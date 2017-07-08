@@ -3,7 +3,7 @@
 //if ( substr(trim($text), 0, 4) === '/rpg' )
 if( substr_count($text, "/rpg") === 1 )
 {
-	//include('part/RPG_test.php');
+	include('part/RPG_test.php');
 	// * 全局操作
 	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
 	{
