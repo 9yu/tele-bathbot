@@ -283,6 +283,24 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$db_insert = "UPDATE bath_data SET heta_power = " . $heta_power . "WHERE id = 1";
 						$db_insert = pg_query($dbcon, $db_insert);
 
+						// 今日污度减少缓存
+						// 存在本地
+						date_default_timezone_set("Asia/Shanghai");
+						$heta_power_a_day_date = date('Y.m.d');
+						// data.heta_power_a_day.年.月.日.cache.json
+						if ( file_exists("data.heta_power_a_day.$heta_power_a_day_date.cache.json") )
+						{
+							$heta_power_a_day = json_decode(file_get_contents("data.heta_power_a_day.$heta_power_a_day_date.cache.json"),true);
+							$heta_power_a_day = $heta_power_a_day + $target_details['max_hp'];
+							file_put_contents("data.heta_power_a_day.$heta_power_a_day_date.cache.json", json_encode($heta_power_a_day));
+						}
+						else
+						{
+							$heta_power_a_day = $target_details['max_hp'];
+							file_put_contents("data.heta_power_a_day.$heta_power_a_day_date.cache.json", json_encode($heta_power_a_day));
+						}
+
+
 						// 清理本地缓存
 						unlink("data.target.$username.cache.json");
 						unlink("data.chara.$username.cache.json");
