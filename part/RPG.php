@@ -105,6 +105,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 	}
 
+	/**
 	//
 	// END 一、角色属性查询
 	//
@@ -508,6 +509,6 @@ if ( substr($text, 0, 4) === '/rpg' )
 		unlink("data.chara.$username.cache.json");
 	}
 
-	
+	**/
 	
 }
