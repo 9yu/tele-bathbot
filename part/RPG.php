@@ -3,7 +3,7 @@
 if ( substr($text, 0, 4) === '/rpg' )
 //if( substr_count($text, "/rpg") === 1 )
 {
-	include('RPG_test.php');
+	//include('RPG_test.php');
 	// * 全局操作
 	
 	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
@@ -104,7 +104,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 		file_put_contents("data.chara.$username.cache.json", json_encode($chara));
 
-		$db_insert = "INSERT INTO bath_user VALUES ('yuusya', $chara['max_hp'], $chara['str'], $chara['level'], ". "'" . $username . "', '" . $name ."')";
+		$db_insert = "INSERT INTO bath_user VALUES ('yuusya', " . $chara['max_hp'] . ", " . $chara['str'] . ", " . $chara['level'] . ", '" . $username . "', '" . $name ."')";
 		$db_insert = pg_query($dbcon, $db_insert);
 
 	}
@@ -243,7 +243,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$chara['status'] = null;
 
 						// 写入数据库
-						$db_insert = "UPDATE bath_user SET type = 'yuusya', hp = $chara['max_hp'], strength = $chara['str'], level = $chara['level'], name = '" . $name ."' WHERE username = '" . $username . "'";
+						$db_insert = "UPDATE bath_user SET type = 'yuusya', hp = " . $chara['max_hp'] . ", strength = " . $chara['str'] . ", level = " . $chara['level'] . ", name = '" . $name ."' WHERE username = '" . $username . "'";
 						$db_insert = pg_query($dbcon, $db_insert);
 
 
@@ -251,7 +251,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$row = pg_fetch_array($db_search);
 						$heta_power = (int)$row['heta_power'] + $target_details['max_hp'];
 
-						$db_insert = "UPDATE bath_data SET heta_power = $heta_power WHERE id = 1";
+						$db_insert = "UPDATE bath_data SET heta_power = " . $heta_power . "WHERE id = 1";
 						$db_insert = pg_query($dbcon, $db_insert);
 
 						// 清理本地缓存
@@ -377,7 +377,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$chara['status'] = null;
 
 						// 写入数据库
-						$db_insert = "UPDATE bath_user SET type = 'yuusya', hp = $chara['max_hp'], strength = $chara['str'], level = $chara['level'], name = '" . $name ."' WHERE username = '" . $username . "'";
+						$db_insert = "UPDATE bath_user SET type = 'yuusya', hp = " . $chara['max_hp'] . ", strength = " . $chara['str'] . ", level = " . $chara['level'] . ", name = '" . $name ."' WHERE username = '" . $username . "'";
 						$db_insert = pg_query($dbcon, $db_insert);
 
 
@@ -385,7 +385,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$row = pg_fetch_array($db_search);
 						$heta_power = (int)$row['heta_power'] + $target_details['max_hp'];
 
-						$db_insert = "UPDATE bath_data SET heta_power = $heta_power WHERE id = 1";
+						$db_insert = "UPDATE bath_data SET heta_power = " . $heta_power . "WHERE id = 1";
 						$db_insert = pg_query($dbcon, $db_insert);
 
 						// 清理本地缓存
