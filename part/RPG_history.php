@@ -3,10 +3,11 @@
 if( file_exists("data.history.$username.cache.json") )
 {
 	$history = json_decode( file_get_contents("data.history.$username.cache.json"), true);
-	if( count($history) >= 8 )
+	if( count($history) >= 10 )
 	{
-		// 0 -7
+		// 0 -7 共 8 条
 		$return_all = "";
+		$return_all .= $history[9] . "\n……\n";
 		for ( $i = 7 ; $i >= 0; $i -- )  
 		{ 
 			$return_all .= $history[$i] . "\n";
