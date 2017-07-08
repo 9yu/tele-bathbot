@@ -13,9 +13,9 @@ if( file_exists("data.history.$username.cache.json") )
 	else
 	{   // 最多 7 个
 		$return_all = "";
-		for ( $i = count($history) - 1; $i > -1; $i -- ) { 
-			$return_all .= $history[$i] . "\n"; 
-		}
+		//for ( $i = count($history) - 1; $i > -1; $i -- ) { 
+		//	$return_all .= $history[$i] . "\n"; 
+		//}
 		$return_all .= ' * ' . $return_text;
 	}
 
