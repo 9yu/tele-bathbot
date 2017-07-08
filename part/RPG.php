@@ -218,7 +218,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 
 	}
-
+/**
 	// 2.战斗状态
 	if( $chara['status'] === 'battle' )
 	{
@@ -488,7 +488,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 	}
 
-	
+**/	
 
 	// 3.行为状态
 	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
