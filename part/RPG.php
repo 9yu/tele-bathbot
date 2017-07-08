@@ -1,12 +1,13 @@
 <?php
 
-if ( substr(trim($text), 0, 4) === '/rpg' )
+//if ( substr(trim($text), 0, 4) === '/rpg' )
+if( substr_count($text, "/rpg") === 1 )
 {
-	include('part/RPG_test.php');
+	//include('part/RPG_test.php');
 	// * 全局操作
 	if( strlen(trim($text)) > 10 )       // /rpg ATTACK MONSTER
 	{
-		$rpg_param = substr(trim($text), 5);
+		$rpg_param = substr(trim($text), 4);
 		if( strpos($rpg_param, '　') ) // 全角转半角空格
 		{
 			$rpg_param = str_replace('　', ' ', $rpg_param);

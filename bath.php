@@ -43,26 +43,26 @@ if ( $dbcon === FALSE )
 //               200000000 /     10000                /    1   /
 
 
-if(!is_null($text) && !is_null($chat_id))
+if ( !is_null($text) && !is_null($chat_id) )
 {
-// TESTING!
-//include('part/test.php');
+	// TESTING!
+	//include('part/test.php');
 
-// 次数统计 & 快速回复
-include('part/main.php');
+	// 次数统计 & 快速回复
+	include('part/main.php');
 
-// 一言
-include('part/hitokoto.php');
+	// 一言
+	include('part/hitokoto.php');
 
-// 随机同人志封面
-include('part/rand_doujinshi_pic.php');
+	// 随机同人志封面
+	include('part/rand_doujinshi_pic.php');
 
-// Danbooru 图片搜索
-include('part/danbooru_search.php');
+	// Danbooru 图片搜索
+	include('part/danbooru_search.php');
 
-// 服务器运行状态
-//include('part/servers_status.php');
+	// 服务器运行状态
+	//include('part/servers_status.php');
 
-// RPG
-//include('part/RPG.php');
+	// RPG
+	//include('part/RPG.php');
 }
