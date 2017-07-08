@@ -62,14 +62,14 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 			// * 第一次游戏提示
 			$return_text = "勇者 $name 大人，恭候多时了。……可惜，如今挥剑恐怕也改变不了什么了。";
-			include('RPG_history.php');
+			//include('RPG_history.php');
 			$content = array(
-							'text'	=> urlencode($return_all),
+							'text'	=> urlencode($return_text),
 						 'chat_id'  => $chat_id,
 			 'reply_to_message_id'  => $message_id
 				);
 			$result = $telegram->sendMessage($content);
-			include('RPG_delete.php');
+			//include('RPG_delete.php');
 
 		}
 		else
@@ -466,7 +466,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 	}
 
-	**/
+	
     // 3.无所事事状态
 	if( $chara['status'] === null )
 	{
@@ -509,6 +509,6 @@ if ( substr($text, 0, 4) === '/rpg' )
 		unlink("data.chara.$username.cache.json");
 	}
 
-	
+	**/
 	
 }
