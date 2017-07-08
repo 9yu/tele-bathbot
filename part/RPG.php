@@ -280,8 +280,8 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$row = pg_fetch_array($db_search);
 						$heta_power = (int)$row['heta_power'] + $target_details['max_hp'];
 
-						$db_insert = "UPDATE bath_data SET heta_power = " . $heta_power . "WHERE id = 1";
-						$db_insert = pg_query($dbcon, $db_insert);
+						$db_insert = "UPDATE bath_data SET heta_power = " . $heta_power . " WHERE id = 1";
+						pg_query($dbcon, $db_insert);
 
 						// 今日污度减少缓存
 						// 存在本地
@@ -432,7 +432,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 						$row = pg_fetch_array($db_search);
 						$heta_power = (int)$row['heta_power'] + $target_details['max_hp'];
 
-						$db_insert = "UPDATE bath_data SET heta_power = " . $heta_power . "WHERE id = 1";
+						$db_insert = "UPDATE bath_data SET heta_power = " . $heta_power . " WHERE id = 1";
 						pg_query($dbcon, $db_insert);
 
 
