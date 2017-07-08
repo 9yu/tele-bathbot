@@ -108,7 +108,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$message_box = array(
 			'chat_id' => $chat_id,
 			'reply_to_message_id' => $message_id,
-			'text' => json_encode($chara)
+			'text' => 'json_encode($chara)'
 			);
 		$telegram->sendMessage($message_box);
 
