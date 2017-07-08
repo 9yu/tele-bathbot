@@ -5,7 +5,7 @@ if( substr_count($text, "/rpg") === 1 )
 {
 	//include('part/RPG_test.php');
 	// * 全局操作
-	if( strlen(trim($text)) > 10 )       // /rpg ATTACK MONSTER
+	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
 	{
 		$rpg_param = substr(trim($text), 4);
 		if( strpos($rpg_param, '　') ) // 全角转半角空格
