@@ -103,6 +103,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$db_insert = "INSERT INTO bath_user VALUES ('yuusya', $chara['max_hp'], $chara['str'], $chara['level'], ". "'" . $username . "', '" . $name ."')";
 		$db_insert = pg_query($dbcon, $db_insert);
 
+	}
 
 		// TEMP TEST PART!!!!!!!
 		$message_box = array(
@@ -111,9 +112,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			'text' => json_encode($chara)
 			);
 		$telegram->sendMessage($message_boxs)
-
-
-	}
+	
 
 	/**
 	//
