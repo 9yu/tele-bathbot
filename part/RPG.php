@@ -3,7 +3,7 @@
 if ( substr($text, 0, 4) === '/rpg' )
 //if( substr_count($text, "/rpg") === 1 )
 {
-	//include('RPG_test.php');
+	include('RPG_test.php');
 	// * 全局操作
 	
 	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
@@ -74,16 +74,15 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 		else
 		{
-			while( $row = pg_fetch_array($db_chara) )
-			{
-				$chara['level'] = (int)$row['level'];
-				$chara['max_hp'] = (int)$row['hp'];
-				$chara['remain_hp'] = (int)$row['hp'];
-				$chara['str'] = (int)$row['strength'];
-				$chara['status'] = null;
-				$chara['target'] = null;
-				$chara['turn'] = null;
-			}
+			$row = pg_fetch_array($db_chara);
+			$chara['level'] = (int)$row['level'];
+			$chara['max_hp'] = (int)$row['hp'];
+			$chara['remain_hp'] = (int)$row['hp'];
+			$chara['str'] = (int)$row['strength'];
+			$chara['status'] = null;
+			$chara['target'] = null;
+			$chara['turn'] = null;
+
 		}
 
 		// 3.写入缓存
