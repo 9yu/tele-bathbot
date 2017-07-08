@@ -482,7 +482,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		}
 	}
 
-	
+	**/
     // 3.无所事事状态
 	if( $chara['status'] === null )
 	{
@@ -526,5 +526,5 @@ if ( substr($text, 0, 4) === '/rpg' )
 	}
 
 	
-	**/
+	
 }
