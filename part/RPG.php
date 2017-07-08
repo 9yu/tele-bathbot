@@ -501,11 +501,11 @@ if ( substr($text, 0, 4) === '/rpg' )
 		include('RPG_delete.php');
 	}
 	
-	/**
+	
 	if( $rpg_param[0] === 'SELF' && $rpg_param[1] === 'CHECK' )
 	{
 
-		$return_text = "Level: $chara['level'] \n HP: $chara['max_hp'] \n 剩余 HP: $chara['remain_hp'] \n 力量: $chara['str']";
+		$return_text = "Level: " . $chara['level'] . " \n HP: " . $chara['max_hp'] . "  \n 剩余 HP: " . $chara['remain_hp'] . "\n 力量: " . $chara['str'];
 		include('RPG_history.php');
 		$content = array(
 					'chat_id' => $chat_id, 
@@ -521,7 +521,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		unlink("data.target.$username.cache.json");
 		unlink("data.chara.$username.cache.json");
 	}
-**/
+
 	
 	
 }
