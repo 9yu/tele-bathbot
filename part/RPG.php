@@ -8,7 +8,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	
 	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
 	{
-		$rpg_param = substr(trim($text), 4);
+		$rpg_param = substr(trim($text), 5);
 		if( strpos($rpg_param, '　') ) // 全角转半角空格
 		{
 			$rpg_param = str_replace('　', ' ', $rpg_param);
