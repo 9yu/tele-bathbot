@@ -18,7 +18,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			$rpg_param = explode(' ', $rpg_param);  // 数组
 		}
 	}
-
+/**
 	// * 快捷处理
 	$username = $data['message']['from']['username'];
 	$name = $data['message']['from']['first_name'];
@@ -103,7 +103,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$db_insert = pg_query($dbcon, $db_insert);
 
 	}
-
+**/
 		// TEMP TEST PART!!!!!!!
 		$message_box = array(
 			'chat_id' => $chat_id,
