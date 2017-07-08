@@ -1,6 +1,6 @@
 <?php
 
-if( is_file("data.history.$username.cache.json") )
+if( file_exists("data.history.$username.cache.json") )
 {
 	// 有历史记录
 	$history = json_decode( file_get_contents("data.history.$username.cache.json"), true);

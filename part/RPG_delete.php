@@ -1,7 +1,7 @@
 <?php
 
 // 删除上次 id
-if( is_file("data.delete.$username.cache.json") )
+if( file_exists("data.delete.$username.cache.json") )
 {
 	$delete = json_decode(file_get_contents("data.delete.$username.cache.json"), true);
 	$telegram->deleteMessage(array( 'chat_id' => $delete['chat_id'], 'message_id' => $delete['message_id'] ));
