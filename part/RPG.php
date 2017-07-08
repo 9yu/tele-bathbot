@@ -3,9 +3,9 @@
 if ( substr($text, 0, 4) === '/rpg' )
 //if( substr_count($text, "/rpg") === 1 )
 {
-	include('RPG_test.php');
+	//include('RPG_test.php');
 	// * 全局操作
-	/**
+	
 	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
 	{
 		$rpg_param = substr(trim($text), 5);
@@ -103,9 +103,19 @@ if ( substr($text, 0, 4) === '/rpg' )
 		$db_insert = "INSERT INTO bath_user VALUES ('yuusya', $chara['max_hp'], $chara['str'], $chara['level'], ". "'" . $username . "', '" . $name ."')";
 		$db_insert = pg_query($dbcon, $db_insert);
 
+
+		// TEMP TEST PART!!!!!!!
+		$message_box = array(
+			'chat_id' => $chat_id,
+			'reply_to_message_id' => $message_id,
+			'text' => json_encode($chara)
+			);
+		$telegram->sendMessage($message_boxs)
+
+
 	}
 
-	
+	/**
 	//
 	// END 一、角色属性查询
 	//
