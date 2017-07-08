@@ -59,7 +59,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 			$chara['max_hp'] = 10;
 			$chara['remain_hp'] = 10;
 			$chara['str'] = 20;
-			$chara['status'] = null;
+			$chara['status'] = 'home';
 			$chara['target'] = null;
 			$chara['turn'] = null;
 
@@ -83,7 +83,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 				$chara['max_hp'] = (int)$row['hp'];
 				$chara['remain_hp'] = (int)$row['hp'];
 				$chara['str'] = (int)$row['strength'];
-				$chara['status'] = null;
+				$chara['status'] = 'home';
 				$chara['target'] = null;
 				$chara['turn'] = null;
 			}
@@ -97,7 +97,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 		//		'max_hp' => 10,
 		//   'remain_hp' => 5,
 		//		   'str' => 20,
-		//		'status' => null,
+		//		'status' => 'home',
 		//	    'target' => null,
 		//		 'turn'  => null
 		//				)
@@ -484,7 +484,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 
 	**/
     // 3.无所事事状态
-	if( $chara['status'] === null )
+	if( $chara['status'] === 'home' )
 	{
 		// 显示主菜单
 		$option = array(
