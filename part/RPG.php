@@ -31,7 +31,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	$chara = array();
 
 	    //  1. 查询缓存
-	if( is_file("data.chara.$username.cache.json") )
+	if( file_exists("data.chara.$username.cache.json") )
 	{
 		$fs_chara = json_decode( file_get_contents("data.chara.$username.cache.json"), true);
 		$chara['level'] = $fs_chara['level']; 			// 等级
