@@ -9,10 +9,6 @@ if ( substr($text, 0, 4) === '/rpg' )
 	if( strlen($text) > 10 )       // /rpg ATTACK MONSTER
 	{
 		$rpg_param = substr(trim($text), 5);
-		if( strpos($rpg_param, '　') ) // 全角转半角空格
-		{
-			$rpg_param = str_replace('　', ' ', $rpg_param);
-		}
 		if ( strpos($rpg_param, ' ') )
 		{
 			$rpg_param = explode(' ', $rpg_param);  // 数组
@@ -110,7 +106,7 @@ if ( substr($text, 0, 4) === '/rpg' )
 	}
 	
 		// TEMP TEST PART!!!!!!!
-		$return_text = json_encode($chara);
+		$return_text = json_encode($rpg_param);
 		include('RPG_history.php');
 		$message_box = array(
 			'chat_id' => $chat_id,
