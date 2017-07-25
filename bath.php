@@ -65,4 +65,7 @@ if ( !is_null($text) && !is_null($chat_id) )
 
 	// RPG
 	include('part/RPG.php');
+
+	include('part/crystal.php');
+
 }
