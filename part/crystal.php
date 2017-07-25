@@ -3,7 +3,9 @@
 if ( substr_count($text, "/crystal ") === 1 ) 
 {
 
-function udpGet($sendMsg = '', $ip = gethostbyname('us-la-a.server.yunet.work'), $port = '9000'){
+$server = gethostbyname('us-la-a.server.yunet.work');
+
+function udpGet($sendMsg = '', $ip = '', $port = '9000'){
     $handle = stream_socket_client("udp://{$ip}:{$port}", $errno, $errstr);
     if( !$handle ){
         die("ERROR: {$errno} - {$errstr}\n");
@@ -26,11 +28,11 @@ function udpGet($sendMsg = '', $ip = gethostbyname('us-la-a.server.yunet.work'),
 		if ( $param[1] === 'ping' )
 		{
 			$send = array(
-			 'api-key' = '9',
-			 'type' = 'ping'
+			 'api-key' => '9',
+			 'type' => 'ping'
 				);
 			$send = json_encode($send);
-			$return = udpGet($send);
+			$return = udpGet($send,$server);
 			$content = array('chat_id' => $chat_id, 'text' => $return);
 			$telegram->sendMessage($content);
 		}
@@ -38,13 +40,13 @@ function udpGet($sendMsg = '', $ip = gethostbyname('us-la-a.server.yunet.work'),
 		if ( $param[1] === 'add' )
 		{
 			$send = array(
-			 'api-key' = '9',
-			 'type' = 'add',
-			 'port' = $param[2] // port
-		 'password' = $param[3] // pass 
+			 'api-key' => '9',
+			 'type' => 'add',
+			 'port' => $param[2], // port
+		 'password' => $param[3] // pass 
 				);
 			$send = json_encode($send);
-			$return = udpGet($send);
+			$return = udpGet($send,$server);
 			$content = array('chat_id' => $chat_id, 'text' => $return);
 			$telegram->sendMessage($content);
 		}
@@ -52,12 +54,12 @@ function udpGet($sendMsg = '', $ip = gethostbyname('us-la-a.server.yunet.work'),
 		if ( $param[1] === 'remove' )
 		{
 			$send = array(
-			 'api-key' = '9',
-			 'type' = 'remove',
-			 'port' = $param[2] // port
+			 'api-key' => '9',
+			 'type' => 'remove',
+			 'port' => $param[2] // port
 				);
 			$send = json_encode($send);
-			$return = udpGet($send);
+			$return = udpGet($send,$server);
 			$content = array('chat_id' => $chat_id, 'text' => $return);
 			$telegram->sendMessage($content);
 		}
